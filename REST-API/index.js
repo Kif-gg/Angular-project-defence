@@ -5,6 +5,7 @@ const cors = require('./middlewares/cors');
 const authController = require('./controllers/authController');
 const dataController = require('./controllers/dataController');
 const adminController = require('./controllers/adminController');
+const repairRequestController = require('./controllers/repairRequestController');
 const trimBody = require('./middlewares/trimBody');
 const session = require('./middlewares/session');
 
@@ -30,7 +31,7 @@ async function start() {
         app.use('/users', authController);
         app.use('/data/offers', dataController);
         app.use('/o074dm1n', adminController);
-        // app.use('')
+        app.use('/data', repairRequestController)
         app.use(trimBody());
         app.use(session());
 

@@ -2,9 +2,9 @@ const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const { secret } = require('../services/userService');
 
 
-const secret = 'udfyfywr7fujvfhdruij';
 let timesUntilBlock = 6;
 
 async function adminLogin(email, password, pin) {
@@ -16,7 +16,6 @@ async function adminLogin(email, password, pin) {
     }
 
     if (!admin) {
-        timesUntilBlock--;
         throw new Error('Incorrect email, password or PIN!');
     } else if (admin.blocked == true) {
         throw new Error('Account blocked for too many wrong attempts! Contact us via email for more details.')

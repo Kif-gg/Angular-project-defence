@@ -47,6 +47,9 @@ authController.get('/logout', async (req, res) => {
 authController.delete('/:userId/profile', hasUser(), async (req, res, next) => {
     try {
         const user = await User.findById(req.params.userId);
+        if (!user) {
+            throw new Error(`User with id ${req.params.userId} does not exist!`);
+        }
         const match = await bcrypt.compare(req.body.password, user.hashedPassword);
         if (!match) {
             throw new Error('Password is incorrect!');
@@ -63,7 +66,7 @@ authController.put('/:userId/profile', hasUser(), async (req, res, next) => {
     try {
         const user = await User.findById(req.params.userId);
         if (!user) {
-            throw new Error('Log in is required!')
+            throw new Error(`User with id ${req.params.userId} does not exist!`);
         }
         const result = await update(req.params.userId, req.body);
         res.json(result);

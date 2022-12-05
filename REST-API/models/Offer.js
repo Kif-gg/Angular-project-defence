@@ -12,10 +12,11 @@ const offerSchema = new Schema({
     },
     description: {
         type: String, required: true,
-        minlength: [10, 'Description must be minimum 10 characters!'],
+        minLength: [10, 'Description must be minimum 10 characters!'],
         maxLength: [255, 'Description cannot be longer than 255 characters!']
     },
     imageUrl: { type: String, default: '' },
+    phoneNumber: { type: String, required: [true, 'Phone number is required!'] },
     _ownerId: { type: ObjectId, ref: 'User', required: true }
 
 });

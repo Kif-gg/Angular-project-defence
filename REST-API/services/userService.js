@@ -34,7 +34,6 @@ async function login(username, password) {
     }
 
     if (!user) {
-        timesUntilBlock--;
         throw new Error('Incorrect username or password!');
     } else if (user.blocked == true) {
         throw new Error('Account blocked for too many wrong attempts! Contact us via email for more details.')
@@ -112,5 +111,6 @@ module.exports = {
     logout,
     parseToken,
     update,
-    deleteUserById
+    deleteUserById,
+    secret
 }

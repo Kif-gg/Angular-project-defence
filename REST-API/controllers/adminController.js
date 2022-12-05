@@ -50,6 +50,10 @@ adminController.get('/h1dd3n4ddr35s/570p/users/blocked', hasUser(), async (req, 
 
 adminController.put('/h1dd3n4ddr35s/570p/users/:userId', hasUser(), async (req, res) => {
     try {
+        const user = User.findById(req.params.userId);
+        if (!user) {
+            throw new Error(`User with id ${req.params.id} does not exist!`)
+        }
         const result = await update(req.params.userId, req.body)
         res.json(result);
     } catch (error) {
