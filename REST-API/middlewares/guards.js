@@ -1,0 +1,24 @@
+function hasUser() {
+    return (req, res, next) => {
+        if (req.user != undefined) {
+            next();
+        } else {
+            res.starus(401).json({ message: 'Log in is required!' });
+        }
+    };
+}
+
+function isGuest() {
+    return (req, res, next) => {
+        if (req.user == undefined) {
+            next();
+        } else {
+            res.starus(400).json({ message: 'You are already logged in!' });
+        }
+    };
+}
+
+module.exports = {
+    hasUser,
+    isGuest
+}
