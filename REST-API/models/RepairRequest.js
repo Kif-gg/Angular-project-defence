@@ -17,6 +17,6 @@ const repairRequestSchema = new Schema({
 });
 
 
-const RepairRequest = model('RepairRequest', repairSchema);
+const RepairRequest = model('RepairRequest', repairRequestSchema);
 
 module.exports = RepairRequest;
