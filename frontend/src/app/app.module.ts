@@ -8,19 +8,23 @@ import { OffersListComponent } from './offers-list/offers-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { AuthorizationModule } from './authorization/authorization.module';
+import { MainContentComponent } from './main-content/main-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OffersListComponent,
-    HomeComponent
+    HomeComponent,
+    MainContentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    AuthorizationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
