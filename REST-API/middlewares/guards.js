@@ -3,7 +3,7 @@ function hasUser() {
         if (req.user != undefined) {
             next();
         } else {
-            res.starus(401).json({ message: 'Log in is required!' });
+            res.status(401).json({ message: 'Log in is required!' });
         }
     };
 }
@@ -13,7 +13,7 @@ function isGuest() {
         if (req.user == undefined) {
             next();
         } else {
-            res.starus(400).json({ message: 'You are already logged in!' });
+            res.status(400).json({ message: 'You are already logged in!' });
         }
     };
 }

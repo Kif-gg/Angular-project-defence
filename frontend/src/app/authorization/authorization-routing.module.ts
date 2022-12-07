@@ -6,21 +6,36 @@ import { RegisterComponent } from "./register/register.component";
 
 const routes: Routes = [
     {
-        path: 'users/login',
-        component: LoginComponent
+        path: 'users',
+        children: [
+            {
+                path: 'login',
+                component: LoginComponent,
+                data: {
+                    title: 'Log in'
+                }
+            },
+            {
+                path: 'register',
+                component: RegisterComponent,
+                data: {
+                    title: 'Register'
+                }
+            },
+            {
+                path: 'logout',
+                component: LogoutComponent,
+            },
+            {
+                path: ':userId/profile',
+                component: ProfileComponent,
+                data: {
+                    title: 'My profile'
+                }
+            }
+
+        ]
     },
-    {
-        path: 'users/register',
-        component: RegisterComponent
-    },
-    {
-        path: 'users/logout',
-        component: LogoutComponent
-    },
-    {
-        path: 'users/:userId/profile',
-        component: ProfileComponent
-    }
 ]
 
 export const AuthorizationRoutingModule = RouterModule.forChild(routes);

@@ -1,1 +1,19 @@
-<p>register works!</p>
+<main>
+
+    <div class="register-box">
+        <h1>Register</h1>
+        <form>
+            <label>Username: </label><input type="text" name="username">
+            <label>Email: </label><input type="text" name="email">
+            <label>Password: </label><input type="password" name="password">
+            <!-- TODO add event to show password -->
+            <input type="checkbox" name="showpass">
+            <label>Confirm Password: </label><input type="password" name="repass">
+            <!-- TODO add event to show password -->
+            <input type="checkbox" name="showrepass">
+            <input type="submit" value="Submit data" routerLink="/">
+        </form>
+        <p>You already have an account? <a routerLink="/users/login">Login here.</a></p>
+    </div>
+
+</main>

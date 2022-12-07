@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IOffer } from '../interfaces/offer';
-import { OfferService } from '../services/offer.service';
+import { IOffer } from '../../shared/interfaces/offer';
+import { OfferService } from '../../services/offer.service';
 
 @Component({
   selector: 'app-offers-list',
@@ -16,7 +16,7 @@ export class OffersListComponent implements OnInit {
   ngOnInit(): void {
     this.offerService.loadOffers().subscribe({
       next: (value) => {
-        this.offersList = value;
+        this.offersList = value;        
       },
       error: (err) => {
         console.error(err);

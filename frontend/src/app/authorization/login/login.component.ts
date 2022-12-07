@@ -12,7 +12,8 @@ export class LoginComponent {
   constructor(private router: Router, private authService: AuthService) {
     this.authService.user = {
       username: 'Alabala'
-    };
+    } as any;
+    // TODO change this to user from database
     // this.router.navigate(['/']);
   }
 

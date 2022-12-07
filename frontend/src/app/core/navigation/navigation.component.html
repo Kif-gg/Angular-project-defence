@@ -1,8 +1,8 @@
 <nav>
     <a routerLink="/" title="Home Page">Home</a>
-    <a routerLink="/" title="Offers Catalog">Vehicle offers</a>
-    <a routerLink="/" title="About Page">About Us</a>
-    <a routerLink="/" title="Frequently Asked Questions">FAQ</a>
+    <a routerLink="/data/offers" title="Offers Catalog">Vehicle offers</a>
+    <a routerLink="/about" title="About Page">About Us</a>
+    <a routerLink="/FAQ" title="Frequently Asked Questions">FAQ</a>
     <div *ngIf="!isLoggedIn">
         <a routerLink="/users/login" title="Login">Login</a>
         <a routerLink="/users/register" title="Register">Register</a>

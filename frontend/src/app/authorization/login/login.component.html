@@ -2,11 +2,13 @@
 
     <div class="login-box">
         <h1>Login</h1>
+        <form>
             <label>Username: </label><input type="text" name="email">
             <label>Password: </label><input type="password" name="password">
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showpass">
             <input type="submit" value="Log in" routerLink="/">
+        </form>
         <p>You don't have an account? <a routerLink="/users/register">Register here.</a></p>
     </div>
 
