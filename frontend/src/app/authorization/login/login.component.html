@@ -7,7 +7,7 @@
             <label>Password: </label><input type="password" name="password">
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showpass">
-            <input type="submit" value="Log in" routerLink="/">
+            <button (click)="loginHandler()">Log in</button>
         </form>
         <p>You don't have an account? <a routerLink="/users/register">Register here.</a></p>
     </div>

@@ -21,4 +21,9 @@ export class OfferService {
     // TODO add logic for getting userId
     return this.httpClient.get<IOffer[]>(`${apiUrl}/data/offers?where=_ownerId="${userId}"`);
   }
+
+  loadOfferById(id: string) {
+    return this.httpClient.get<IOffer>(`${apiUrl}/data/offers/${id}"`);
+
+  }
 }

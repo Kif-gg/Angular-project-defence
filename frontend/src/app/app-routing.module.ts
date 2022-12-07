@@ -11,32 +11,28 @@ const routes: Routes = [
     pathMatch: 'full',
     component: MainContentComponent,
     data: {
-      title: 'RBS-Vehicles Express',
-      loginRequired: false
+      title: 'RBS-Vehicles Express'
     }
   },
   {
     path: 'about',
     component: AboutComponent,
     data: {
-      title: 'About us',
-      loginRequired: false
+      title: 'About us'
     }
   },
   {
     path: 'FAQ',
     component: FaqComponent,
     data: {
-      title: 'Frequently Asked Questions',
-      loginRequired: false
+      title: 'Frequently Asked Questions'
     }
   },
   {
     path: '404-not-found',
     component: NotFoundComponent,
     data: {
-      title: 'Oops...!',
-      loginRequired: false
+      title: 'Oops...!'
     }
   },
   {

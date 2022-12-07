@@ -7,43 +7,40 @@ import { RegisterComponent } from "./register/register.component";
 
 const routes: Routes = [
     {
-        path: 'users',
+        path: 'users/login',
+        component: LoginComponent,
         canActivate: [AuthGuard],
-        children: [
-            {
-                path: 'login',
-                component: LoginComponent,
-                data: {
-                    title: 'Log in',
-                    loginRequired: false
-                }
-            },
-            {
-                path: 'register',
-                component: RegisterComponent,
-                data: {
-                    title: 'Register',
-                    loginRequired: false
-                }
-            },
-            {
-                path: 'logout',
-                component: LogoutComponent,
-                data: {
-                    loginRequired: true,
-                }
-            },
-            {
-                path: ':userId/profile',
-                component: ProfileComponent,
-                data: {
-                    title: 'My profile',
-                    loginRequired: true,
-                }
-            }
-
-        ]
+        data: {
+            title: 'Log in',
+            loginRequired: false
+        }
     },
+    {
+        path: 'users/register',
+        component: RegisterComponent,
+        canActivate: [AuthGuard],
+        data: {
+            title: 'Register',
+            loginRequired: false
+        }
+    },
+    {
+        path: 'users/logout',
+        component: LogoutComponent,
+        canActivate: [AuthGuard],
+        data: {
+            loginRequired: true,
+        }
+    },
+    {
+        path: 'users/:userId/profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+        data: {
+            title: 'My profile',
+            loginRequired: true,
+        }
+    }
 ]
 
 export const AuthorizationRoutingModule = RouterModule.forChild(routes);
