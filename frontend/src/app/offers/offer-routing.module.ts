@@ -9,14 +9,16 @@ const routes: Routes = [
                 path: 'offers',
                 component: OffersListComponent,
                 data: {
-                    title: 'All offers'
+                    title: 'All offers',
+                    loginRequired: false
                 }
             },
             {
                 path: 'offers?where=_ownerId%3D%22{userId}%3D',
                 component: OffersListComponent,
                 data: {
-                    title: 'My offers'
+                    title: 'My offers',
+                    loginRequired: true
                 }
             }
         ]
