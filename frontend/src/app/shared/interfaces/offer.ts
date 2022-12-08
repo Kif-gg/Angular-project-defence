@@ -1,6 +1,7 @@
 import { IUser } from "./user";
 
 export interface IOffer {
+    _id: string;
     vehicleBrand: string;
     vehicleModel: string;
     price: number;

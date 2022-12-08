@@ -23,7 +23,7 @@ export class OfferService {
   }
 
   loadOfferById(id: string) {
-    return this.httpClient.get<IOffer>(`${apiUrl}/data/offers/${id}"`);
+    return this.httpClient.get<IOffer[]>(`${apiUrl}/data/offers/${id}`);
 
   }
 }

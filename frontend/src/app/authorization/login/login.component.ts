@@ -15,6 +15,7 @@ export class LoginComponent {
   loginHandler(): void {
     // TODO change this to user from database
     this.authService.user = {
+      _id: 'adjwiaow99a4daw48d',
       username: 'Alabala'
     } as any;
     this.router.navigate(['/']);

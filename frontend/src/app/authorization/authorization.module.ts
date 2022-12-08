@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthorizationRoutingModule } from './authorization-routing.module';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,11 +14,12 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
-    AuthorizationRoutingModule
+    AuthorizationRoutingModule,
+    FormsModule
   ]
 })
 export class AuthorizationModule { }

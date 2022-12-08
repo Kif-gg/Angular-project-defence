@@ -12,6 +12,7 @@ async function adminLogin(email, password, pin) {
 
     if (timesUntilBlock <= 0) {
         admin.blocked = true;
+        admin.save();
         timesUntilBlock = 6;
     }
 

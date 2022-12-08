@@ -30,6 +30,7 @@ async function login(username, password) {
 
     if (timesUntilBlock <= 0) {
         user.blocked = true;
+        user.save();
         timesUntilBlock = 10;
     }
 

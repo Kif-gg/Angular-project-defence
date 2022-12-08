@@ -18,7 +18,8 @@ import { OfferDetailsComponent } from './offer-details/offer-details.component';
     SharedModule
   ],
   exports: [
-    OffersListComponent
+    OffersListComponent,
+    OfferDetailsComponent
   ]
 })
 export class OffersModule { }

@@ -10,8 +10,9 @@ const authController = require('express').Router();
 authController.post('/register',
     body('username').isLength({ min: 3 }).withMessage('Username must be at least 3 characters!'),
     body('username').isLength({ max: 12 }).withMessage('Username cannot be more than 12 characters!'),
-    body('email').isEmail().withMessage('Invalid email'),
+    body('email').isEmail().withMessage('Invalid email!'),
     async (req, res) => {
+        console.log(req.body);
         try {
             const { errors } = validationResult(req);
             if (errors.length > 0) {
@@ -56,6 +57,20 @@ authController.delete('/:userId/profile', hasUser(), async (req, res, next) => {
         }
         await deleteUserById(req.user._id);
         res.status(204).end();
+    } catch (error) {
+        const message = parseError(error);
+        res.status(400).json({ message });
+    }
+});
+
+authController.get('/:userId/profile', hasUser(), async (req, res, next) => {
+    console.log(req.params);
+    try {
+        const user = await User.findById(req.params.userId);
+        if (!user) {
+            throw new Error(`User with id ${req.params.userId} does not exist!`);
+        }
+        res.status(204).json(user);
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });

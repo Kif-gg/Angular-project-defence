@@ -450,13 +450,13 @@
     <h1>Check all offers for vehicles!</h1>
     <div *ngIf="offersList != null" class="all-offers">
         <div *ngFor="let offer of offersList" class="offer-card">
+            <p style="display:none">{{offer._id}}</p>
             <h2>{{offer.vehicleBrand}}</h2>
             <h3>{{offer.vehicleModel}}</h3>
             <p>{{offer.price}}</p>
             <p>{{offer.year}}</p>
-            <p>{{offer.description}}</p>
             <img [attr.src]="offer.imageUrl">
-            <p>{{offer.phoneNumber}}</p>
+            <button class="details" (click)="detailsHandler($event)">Details</button>
         </div>
     </div>
     <h2 *ngIf="offersList == null || offersList.length <= 0">There aren't any offers yet!</h2>
