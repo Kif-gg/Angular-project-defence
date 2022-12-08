@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
+import { MainContentComponent } from './main-content/main-content.component';
 
 
 
@@ -15,7 +16,8 @@ import { AboutComponent } from './about/about.component';
     FooterComponent,
     NotFoundComponent,
     FaqComponent,
-    AboutComponent
+    AboutComponent,
+    MainContentComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { AboutComponent } from './about/about.component';
     FooterComponent,
     NotFoundComponent,
     FaqComponent,
-    AboutComponent
+    AboutComponent,
+    MainContentComponent
   ]
 })
 export class CoreModule { }

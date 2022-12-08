@@ -12,7 +12,6 @@ authController.post('/register',
     body('username').isLength({ max: 12 }).withMessage('Username cannot be more than 12 characters!'),
     body('email').isEmail().withMessage('Invalid email!'),
     async (req, res) => {
-        console.log(req.body);
         try {
             const { errors } = validationResult(req);
             if (errors.length > 0) {

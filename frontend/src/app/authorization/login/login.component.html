@@ -20,7 +20,7 @@
             </ng-container>
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showpass">
-            <button>Log in</button>
+            <button [disabled]="loginForm.invalid">Log in</button>
         </form>
         <p>You don't have an account? <a routerLink="/users/register">Register here.</a></p>
     </div>

@@ -4,10 +4,16 @@
         <h1>Register</h1>
         <form #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
             <label>Username: </label>
-            <input #usernameInput="ngModel" type="text" name="username" ngModel required>
+            <input #usernameInput="ngModel" type="text" name="username" ngModel required minlength="3" maxlength="12">
             <ng-container *ngIf="usernameInput.touched">
                 <p class="error" *ngIf="usernameInput.errors?.['required']">
                     Username is required!
+                </p>
+                <p class="error" *ngIf="usernameInput.errors?.['minlength']">
+                    Username is too short!
+                </p>
+                <p class="error" *ngIf="usernameInput.errors?.['maxlength']">
+                    Username is too long!
                 </p>
             </ng-container>
             <label>Email: </label>
@@ -33,7 +39,7 @@
             <input #repassInput="ngModel" type="password" name="repass" ngModel required>
             <ng-container *ngIf="repassInput.touched">
                 <p class="error" *ngIf="repassInput.errors?.['required']">
-                    Passwords don't match!
+                    Repeating password is required!
                 </p>
                 <p class="error" *ngIf="repassInput.value !== passwordInput.value">
                     Passwords don't match!
@@ -41,7 +47,7 @@
             </ng-container>
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showrepass">
-            <input type="submit" value="Submit data" routerLink="/">
+            <button [disabled]="registerForm.invalid">Register</button>
         </form>
         <p>You already have an account? <a routerLink="/users/login">Login here.</a></p>
     </div>
