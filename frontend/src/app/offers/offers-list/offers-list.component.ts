@@ -25,10 +25,13 @@ export class OffersListComponent implements OnInit {
       }
     });
   }
+  selectedValue = '';
+  onSelectedHandler(value: string): void {
+    this.selectedValue = value;
+  }
 
   detailsHandler(event: Event): void {
     const id = (event.target as HTMLElement).parentElement?.children[0].textContent;
-    console.log(id);
     
     this.router.navigate([`/data/offers/${id}`]);
   }

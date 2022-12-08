@@ -4,18 +4,22 @@ import { OffersListComponent } from './offers-list/offers-list.component';
 import { OfferRoutingModule } from './offer-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
+import { NewOfferComponent } from './new-offer/new-offer.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     OffersListComponent,
-    OfferDetailsComponent
+    OfferDetailsComponent,
+    NewOfferComponent
   ],
   imports: [
     CommonModule,
     OfferRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
     OffersListComponent,

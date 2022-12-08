@@ -1,12 +1,12 @@
 <app-loader *ngIf="!offersList"></app-loader>
 <main>
-    <a href="createoffer.html">Create your new offer</a>
-    <form method="get" target="/search">
+    <a routerLink="/data/offers/create">Create your new offer</a>
+    <form>
         <!-- TODO make the style better -->
         <!-- TODO make the other divs to be hidden upon choosing something from the dropdown -->
         <div id="brand-vehicle-select">
-            <label for="brand">Choose car brand</label>
-            <select name="brand">
+            <label for="brand">Choose brand</label>
+                <select name="brand" #brand (change)="onSelectedHandler(brand.value)">
                 <option selected value="all">All</option>
                 <option value="Audi">Audi</option>
                 <option value="BMW">BMW</option>
@@ -39,10 +39,9 @@
             </select>
         </div>
         <div id="all-models">
-            <div id="Audi">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Audi'" id="Audi">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="A1">A1</option>
                     <option value="A2">A2</option>
                     <option value="A3">A3</option>
@@ -72,10 +71,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="BMW">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'BMW'" id="BMW">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="1 Series">1 Series</option>
                     <option value="2 Series">2 Series</option>
                     <option value="3 Series">3 Series</option>
@@ -100,20 +98,18 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Bugatti">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Bugatti'" id="Bugatti">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Divo">Divo</option>
                     <option value="Chiron">Chiron</option>
                     <option value="Veyron">Veyron</option>
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Citroen">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Citroen'" id="Citroen">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Berlingo">Berlingo</option>
                     <option value="C1">C1</option>
                     <option value="C2">C2</option>
@@ -125,10 +121,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Dodge">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Dodge'" id="Dodge">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Challenger">Challenger</option>
                     <option value="Charger">Charger</option>
                     <option value="Durango">Durango</option>
@@ -143,10 +138,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Ferrarri">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Ferrari'" id="Ferrari">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="F40">F40</option>
                     <option value="F355">F355</option>
                     <option value="488 GTB">488 GTB</option>
@@ -155,10 +149,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Ford">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Ford'" id="Ford">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Fiesta">Fiesta</option>
                     <option value="Focus">Focus</option>
                     <option value="GT">GT</option>
@@ -168,10 +161,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Honda">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Honda'" id="Honda">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="CRV">CRV</option>
                     <option value="Accord">Accord</option>
                     <option value="Odyssey">Odyssey</option>
@@ -181,10 +173,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Jeep">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Jeep'" id="Jeep">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Avenger">Avenger</option>
                     <option value="Cherokee">Cherokee</option>
                     <option value="Grand Cherokee">Grand Cherokee</option>
@@ -194,10 +185,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Lada">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Lada'" id="Lada">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Niva">Niva</option>
                     <option value="Vesta">Vesta</option>
                     <option value="XRAY">XRAY</option>
@@ -205,10 +195,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Lamborghini">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Lamborghini'" id="Lamborghini">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Huracan">Huracan</option>
                     <option value="Aventador">Aventador</option>
                     <option value="Gallardo">Gallardo</option>
@@ -218,10 +207,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Mazda">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Mazda'" id="Mazda">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="RX7">RX7</option>
                     <option value="RX8">RX8</option>
                     <option value="2">2</option>
@@ -233,10 +221,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Mercedes-Benz">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Mercedes-Benz'" id="Mercedes-Benz">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="A-Class">A-Class</option>
                     <option value="B-Class">B-Class</option>
                     <option value="C-Class">C-Class</option>
@@ -246,10 +233,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Mini">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Mini'" id="Mini">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Cooper">Cooper</option>
                     <option value="One">One</option>
                     <option value="Paceman">Paceman</option>
@@ -257,10 +243,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Mitsubishi">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Mitsubishi'" id="Mitsubishi">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Lancer">Lancer</option>
                     <option value="Galant">Galant</option>
                     <option value="Colt">Colt</option>
@@ -273,10 +258,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Nissan">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Nissan'" id="Nissan">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Qashqai">Qashqai</option>
                     <option value="Navara">Navara</option>
                     <option value="Skyline GT-R">Skyline GT-R</option>
@@ -286,10 +270,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Opel">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Opel'" id="Opel">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Astra">Astra</option>
                     <option value="Corsa">Corsa</option>
                     <option value="Mokka">Mokka</option>
@@ -302,10 +285,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Peugeot">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Peugeot'" id="Peugeot">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="208">208</option>
                     <option value="308">308</option>
                     <option value="2008">2008</option>
@@ -318,10 +300,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Porsche">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Porsche'" id="Porsche">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="911">911</option>
                     <option value="Panamera">Panamera</option>
                     <option value="Spyder">Spyder</option>
@@ -332,10 +313,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Renault">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Renault'" id="Renault">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Talisman">Talisman</option>
                     <option value="Initiale">Initiale</option>
                     <option value="Arkana">Arkana</option>
@@ -347,10 +327,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Seat">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Seat'" id="Seat">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Leon">Leon</option>
                     <option value="Ibiza">Ibiza</option>
                     <option value="Arona">Arona</option>
@@ -362,10 +341,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Skoda">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Skoda'" id="Skoda">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Kodiaq">Kodiaq</option>
                     <option value="Enyaq">Enyaq</option>
                     <option value="Rapid">Rapid</option>
@@ -377,10 +355,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Suzuki">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Suzuki'" id="Suzuki">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Vitara">Vitara</option>
                     <option value="Swift">Swift</option>
                     <option value="Ignis">Ignis</option>
@@ -389,10 +366,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Tesla">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Tesla'" id="Tesla">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Model 3">Model 3</option>
                     <option value="Model S">Model S</option>
                     <option value="Model X">Model X</option>
@@ -402,10 +378,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Toyota">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Toyota'" id="Toyota">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Yaris">Yaris</option>
                     <option value="Rav4">Rav4</option>
                     <option value="Supra">Supra</option>
@@ -417,20 +392,18 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="Trabant">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'Trabant'" id="Trabant">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="600">600</option>
                     <option value="601">601</option>
                     <option value="T 1.1">T 1.1</option>
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div id="VW">
-                <label for="model">Choose model</label>
+            <div *ngIf="brand.value == 'VW'" id="VW">
+                <label for="model">Chose model </label>
                 <select name="model">
-                    <option value="All">All</option>
                     <option value="Passat">Passat</option>
                     <option value="Golf">Golf</option>
                     <option value="Taos">Taos</option>
@@ -446,6 +419,17 @@
                 </select>
             </div>
         </div>
+        <label for="fromPrice">From price: </label>
+        <input type="number" name="fromPrice">
+        <label for="toPrice">To price: </label>
+        <input type="number" name="fromPrice">
+        <label for="fromYear">From year: </label>
+        <input type="number" name="fromPrice">
+        <label for="fromYear">From year: </label>
+        <input type="number" name="fromPrice">
+        <label for="keyword">Keyword: </label>
+        <input type="text" name="keyword">
+        <button>Search</button>
     </form>
     <h1>Check all offers for vehicles!</h1>
     <div *ngIf="offersList != null" class="all-offers">

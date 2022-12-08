@@ -1,0 +1,432 @@
+<main>
+    <div class="new-offer-box">
+        <h1>Create new offer</h1>
+        <form #createOffer="ngForm" (submit)="createOfferHandler()">
+            <div id="brand-vehicle-select">
+                <label for="brand">Brand: </label>
+                <select name="brand" #brand (change)="onSelectedHandler(brand.value)">
+                    <option value="Audi">Audi</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Bugatti">Bugatti</option>
+                    <option value="Citroen">Citroen</option>
+                    <option value="Dodge">Dodge</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Lada">Lada</option>
+                    <option value="Lamborghini">Lamborghini</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Mini">Mini</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Opel">Opel</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Seat">Seat</option>
+                    <option value="Skoda">Skoda</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Trabant">Trabant</option>
+                    <option value="VW">VW</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div id="all-models">
+                <div *ngIf="brand.value == 'Audi'" id="Audi">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="A3">A3</option>
+                        <option value="A4">A4</option>
+                        <option value="A5">A5</option>
+                        <option value="A6">A6</option>
+                        <option value="A7">A7</option>
+                        <option value="A8">A8</option>
+                        <option value="Cabriolet">Cabriolet</option>
+                        <option value="Q2">Q2</option>
+                        <option value="Q3">Q3</option>
+                        <option value="Q4">Q4</option>
+                        <option value="Q5">Q5</option>
+                        <option value="Q7">Q7</option>
+                        <option value="Q8">Q8</option>
+                        <option value="Quattro">Quattro</option>
+                        <option value="R8">R8</option>
+                        <option value="S1">S1</option>
+                        <option value="S2">S2</option>
+                        <option value="S3">S3</option>
+                        <option value="S4">S4</option>
+                        <option value="S5">S5</option>
+                        <option value="S6">S6</option>
+                        <option value="S7">S7</option>
+                        <option value="S8">S8</option>
+                        <option value="Tt">Tt</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'BMW'" id="BMW">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="1 Series">1 Series</option>
+                        <option value="2 Series">2 Series</option>
+                        <option value="3 Series">3 Series</option>
+                        <option value="4 Series">4 Series</option>
+                        <option value="5 Series">5 Series</option>
+                        <option value="6 Series">6 Series</option>
+                        <option value="7 Series">7 Series</option>
+                        <option value="i3">i3</option>
+                        <option value="i8">i8</option>
+                        <option value="M2">M2</option>
+                        <option value="M3">M3</option>
+                        <option value="M4">M4</option>
+                        <option value="M5">M5</option>
+                        <option value="M6">M6</option>
+                        <option value="X1">X1</option>
+                        <option value="X2">X2</option>
+                        <option value="X3">X3</option>
+                        <option value="X4">X4</option>
+                        <option value="X5">X5</option>
+                        <option value="X6">X6</option>
+                        <option value="Z4">Z4</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Bugatti'" id="Bugatti">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Divo">Divo</option>
+                        <option value="Chiron">Chiron</option>
+                        <option value="Veyron">Veyron</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Citroen'" id="Citroen">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Berlingo">Berlingo</option>
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                        <option value="C3">C3</option>
+                        <option value="C4">C4</option>
+                        <option value="C5">C5</option>
+                        <option value="C-Crosser">C-Crosser</option>
+                        <option value="C-Zero">C-Zero</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Dodge'" id="Dodge">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Challenger">Challenger</option>
+                        <option value="Charger">Charger</option>
+                        <option value="Durango">Durango</option>
+                        <option value="Hornet">Hornet</option>
+                        <option value="Avenger">Avenger</option>
+                        <option value="Caliber">Caliber</option>
+                        <option value="Viper">Viper</option>
+                        <option value="Dacota">Dacota</option>
+                        <option value="Dart">Dart</option>
+                        <option value="Journey">Journey</option>
+                        <option value="Ram">Ram</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Ferrari'" id="Ferrari">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="F40">F40</option>
+                        <option value="F355">F355</option>
+                        <option value="488 GTB">488 GTB</option>
+                        <option value="F50">F50</option>
+                        <option value="F12 Berlinetta">F12 Berlinetta</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Ford'" id="Ford">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Fiesta">Fiesta</option>
+                        <option value="Focus">Focus</option>
+                        <option value="GT">GT</option>
+                        <option value="Mustang">Mustang</option>
+                        <option value="Ranger">Ranger</option>
+                        <option value="F Series">F Series</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Honda'" id="Honda">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="CRV">CRV</option>
+                        <option value="Accord">Accord</option>
+                        <option value="Odyssey">Odyssey</option>
+                        <option value="Accord">Accord</option>
+                        <option value="Civic">Civic</option>
+                        <option value="HRV">HRV</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Jeep'" id="Jeep">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Avenger">Avenger</option>
+                        <option value="Cherokee">Cherokee</option>
+                        <option value="Grand Cherokee">Grand Cherokee</option>
+                        <option value="Compass">Compass</option>
+                        <option value="Wrangler">Wrangler</option>
+                        <option value="Renegade">Renegade</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Lada'" id="Lada">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Niva">Niva</option>
+                        <option value="Vesta">Vesta</option>
+                        <option value="XRAY">XRAY</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Lamborghini'" id="Lamborghini">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Huracan">Huracan</option>
+                        <option value="Aventador">Aventador</option>
+                        <option value="Gallardo">Gallardo</option>
+                        <option value="Murcielago">Murcielago</option>
+                        <option value="Urus">Urus</option>
+                        <option value="Sesto Elemento">Sesto Elemento</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Mazda'" id="Mazda">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="RX7">RX7</option>
+                        <option value="RX8">RX8</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="CX5">CX5</option>
+                        <option value="CX9">CX9</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Mercedes-Benz'" id="Mercedes-Benz">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="A-Class">A-Class</option>
+                        <option value="B-Class">B-Class</option>
+                        <option value="C-Class">C-Class</option>
+                        <option value="E-Class">E-Class</option>
+                        <option value="G-Class">G-Class</option>
+                        <option value="S-Class">S-Class</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Mini'" id="Mini">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Cooper">Cooper</option>
+                        <option value="One">One</option>
+                        <option value="Paceman">Paceman</option>
+                        <option value="Countryman">Countryman</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Mitsubishi'" id="Mitsubishi">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Lancer">Lancer</option>
+                        <option value="Galant">Galant</option>
+                        <option value="Colt">Colt</option>
+                        <option value="Outlander">Outlander</option>
+                        <option value="Warrior">Warrior</option>
+                        <option value="FTO">FTO</option>
+                        <option value="Shogun">Shogun</option>
+                        <option value="Mirage">Mirage</option>
+                        <option value="Xpander">Xpander</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Nissan'" id="Nissan">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Qashqai">Qashqai</option>
+                        <option value="Navara">Navara</option>
+                        <option value="Skyline GT-R">Skyline GT-R</option>
+                        <option value="GT-R">GT-R</option>
+                        <option value="Silvia">Silvia</option>
+                        <option value="Micra">Micra</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Opel'" id="Opel">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Astra">Astra</option>
+                        <option value="Corsa">Corsa</option>
+                        <option value="Mokka">Mokka</option>
+                        <option value="Insignia">Insignia</option>
+                        <option value="Zafira">Zafira</option>
+                        <option value="Tigra">Tigra</option>
+                        <option value="Frontera">Frontera</option>
+                        <option value="Vectra">Vectra</option>
+                        <option value="Grandland">Grandland</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Peugeot'" id="Peugeot">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="208">208</option>
+                        <option value="308">308</option>
+                        <option value="2008">2008</option>
+                        <option value="3008">3008</option>
+                        <option value="Rifter">Rifter</option>
+                        <option value="Bipper">Bipper</option>
+                        <option value="Partner">Partner</option>
+                        <option value="Range">Range</option>
+                        <option value="Rifter">Rifter</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Porsche'" id="Porsche">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="911">911</option>
+                        <option value="Panamera">Panamera</option>
+                        <option value="Spyder">Spyder</option>
+                        <option value="Carrera GT">Carrera GT</option>
+                        <option value="Cayenne">Cayenne</option>
+                        <option value="Boxter">Boxter</option>
+                        <option value="Magnum">Magnum</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Renault'" id="Renault">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Talisman">Talisman</option>
+                        <option value="Initiale">Initiale</option>
+                        <option value="Arkana">Arkana</option>
+                        <option value="Alaskan">Alaskan</option>
+                        <option value="Duster">Duster</option>
+                        <option value="Captur">Captur</option>
+                        <option value="Clio">Clio</option>
+                        <option value="Megane">Megane</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Seat'" id="Seat">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Leon">Leon</option>
+                        <option value="Ibiza">Ibiza</option>
+                        <option value="Arona">Arona</option>
+                        <option value="Ateca">Ateca</option>
+                        <option value="Tarraco">Tarraco</option>
+                        <option value="Toledo">Toledo</option>
+                        <option value="Altea">Altea</option>
+                        <option value="Cordoba">Cordoba</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Skoda'" id="Skoda">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Kodiaq">Kodiaq</option>
+                        <option value="Enyaq">Enyaq</option>
+                        <option value="Rapid">Rapid</option>
+                        <option value="Yeti">Yeti</option>
+                        <option value="Octavia">Octavia</option>
+                        <option value="Superb">Superb</option>
+                        <option value="Fabia">Fabia</option>
+                        <option value="Kamiq">Kamiq</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Suzuki'" id="Suzuki">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Vitara">Vitara</option>
+                        <option value="Swift">Swift</option>
+                        <option value="Ignis">Ignis</option>
+                        <option value="Jimny">Jimny</option>
+                        <option value="Samurai">Samurai</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Tesla'" id="Tesla">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Model 3">Model 3</option>
+                        <option value="Model S">Model S</option>
+                        <option value="Model X">Model X</option>
+                        <option value="Roadster">Roadster</option>
+                        <option value="Model Y">Model Y</option>
+                        <option value="Cybertruck">Cybertruck</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Toyota'" id="Toyota">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Yaris">Yaris</option>
+                        <option value="Rav4">Rav4</option>
+                        <option value="Supra">Supra</option>
+                        <option value="Corolla">Corolla</option>
+                        <option value="C-HR">C-HR</option>
+                        <option value="Avensis">Avensis</option>
+                        <option value="Auris">Auris</option>
+                        <option value="Tundra">Tundra</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'Trabant'" id="Trabant">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="600">600</option>
+                        <option value="601">601</option>
+                        <option value="T 1.1">T 1.1</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div *ngIf="brand.value == 'VW'" id="VW">
+                    <label for="model">Model: </label>
+                    <select name="model">
+                        <option value="Passat">Passat</option>
+                        <option value="Golf">Golf</option>
+                        <option value="Taos">Taos</option>
+                        <option value="Jetta">Jetta</option>
+                        <option value="Polo">Polo</option>
+                        <option value="Tiguan">Tiguan</option>
+                        <option value="Sharan">Sharan</option>
+                        <option value="Sirocco">Sirocco</option>
+                        <option value="Phaeton">Phaeton</option>
+                        <option value="Touareg">Touareg</option>
+                        <option value="Touran">Touran</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <label fof="price">Price: </label>
+            <input type="number" name="price">
+            <label fof="year">Year: </label>
+            <input type="number" name="year">
+            <label fof="description">Description: </label>
+            <input type="number" name="description">
+            <label fof="imageUrl">Image URL: </label>
+            <input type="text" name="imageUrl">
+            <label fof="phoneNumber">Your phone number for contacts: </label>
+            <input type="text" name="phoneNumber">
+            <button>Create your offer</button>
+        </form>
+    </div>
+</main>

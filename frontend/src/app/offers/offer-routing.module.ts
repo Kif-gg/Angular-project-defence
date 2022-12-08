@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
+import { NewOfferComponent } from "./new-offer/new-offer.component";
 import { OfferDetailsComponent } from "./offer-details/offer-details.component";
 import { OffersListComponent } from "./offers-list/offers-list.component";
 
@@ -23,13 +24,21 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'offers/create',
+                component: NewOfferComponent,
+                data: {
+                    title: 'Create offer',
+                    loginRequired: true
+                }
+            },
+            {
                 path: 'offers/:id',
                 component: OfferDetailsComponent,
                 data: {
                     title: 'Details',
                     loginRequired: false
                 }
-            }
+            },
         ]
     }
 ];
