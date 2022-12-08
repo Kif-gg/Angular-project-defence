@@ -1,15 +1,15 @@
 <app-loader *ngIf="!offerDetails"></app-loader>
 <main>
 
-    <div class="details" *ngFor="let offer of offerDetails">
-        <h2>{{offer?.vehicleBrand}}</h2>
-        <h3>{{offer?.vehicleModel}}</h3>
-        <p>{{offer?.price}}</p>
-        <p>{{offer?.year}}</p>
-        <p>{{offer?.description}}</p>
-        <img src="{{offer?.imageUrl}}" alt="{{offer?.vehicleBrand}} {{offer?.vehicleModel}}"/>
-        <p>{{offer?.phoneNumber}}</p>
-        <div *ngIf="offer?._ownerId == user?._id" class="buttons-offer">
+    <div class="details">
+        <h2>{{offerDetails?.vehicleBrand}}</h2>
+        <h3>{{offerDetails?.vehicleModel}}</h3>
+        <p>{{offerDetails?.price}}</p>
+        <p>{{offerDetails?.year}}</p>
+        <p>{{offerDetails?.description}}</p>
+        <img src="{{offerDetails?.imageUrl}}" alt="{{offerDetails?.vehicleBrand}} {{offerDetails?.vehicleModel}}"/>
+        <p>{{offerDetails?.phoneNumber}}</p>
+        <div *ngIf="offerDetails?._ownerId == user?._id" class="buttons-offer">
             <button (click)="editHandler()">Edit</button>
             <button (click)="deleteHandler()">Delete</button>
         </div>

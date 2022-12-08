@@ -5,7 +5,6 @@ const { parseError } = require('../util/parser');
 const dataController = require('express').Router();
 
 dataController.get('/', async (req, res) => {
-    console.log(req.params)
     try {
         let offers = [];
         if (req.query.where) {
@@ -38,8 +37,6 @@ dataController.post('/', hasUser(), async (req, res) => {
 
 
 dataController.get('/:id', async (req, res, next) => {
-    // req.params.id = req.params.id.slice(0, req.params.id.length - 1);
-    console.log(req.params);
     try {
         const offer = await getById(req.params.id);
         res.json(offer);

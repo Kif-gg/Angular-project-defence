@@ -2,13 +2,43 @@
 
     <div class="register-box">
         <h1>Register</h1>
-        <form>
-            <label>Username: </label><input type="text" name="username">
-            <label>Email: </label><input type="text" name="email">
-            <label>Password: </label><input type="password" name="password">
+        <form #registerForm="ngForm" (ngSubmit)="registerHandler(registerForm)">
+            <label>Username: </label>
+            <input #usernameInput="ngModel" type="text" name="username" ngModel required>
+            <ng-container *ngIf="usernameInput.touched">
+                <p class="error" *ngIf="usernameInput.errors?.['required']">
+                    Username is required!
+                </p>
+            </ng-container>
+            <label>Email: </label>
+            <input #emailInput="ngModel" type="text" name="email" ngModel required appEmail>
+            <ng-container *ngIf="emailInput.touched">
+                <p class="error" *ngIf="emailInput.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="emailInput.errors?.['appEmailValidator']">
+                    Email is invalid!
+                </p>
+            </ng-container>
+            <label>Password: </label>
+            <input #passwordInput="ngModel" type="password" name="password" ngModel required>
+            <ng-container *ngIf="passwordInput.touched">
+                <p class="error" *ngIf="passwordInput.errors?.['required']">
+                    Password is required!
+                </p>
+            </ng-container>
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showpass">
-            <label>Confirm Password: </label><input type="password" name="repass">
+            <label>Confirm Password: </label>
+            <input #repassInput="ngModel" type="password" name="repass" ngModel required>
+            <ng-container *ngIf="repassInput.touched">
+                <p class="error" *ngIf="repassInput.errors?.['required']">
+                    Passwords don't match!
+                </p>
+                <p class="error" *ngIf="repassInput.value !== passwordInput.value">
+                    Passwords don't match!
+                </p>
+            </ng-container>
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showrepass">
             <input type="submit" value="Submit data" routerLink="/">

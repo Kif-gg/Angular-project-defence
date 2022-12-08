@@ -2,12 +2,25 @@
 
     <div class="login-box">
         <h1>Login</h1>
-        <form>
-            <label>Username: </label><input type="text" name="email">
-            <label>Password: </label><input type="password" name="password">
+        <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+            <!-- TODO add error controls -->
+            <label>Username: </label>
+            <input #usernameInput="ngModel" type="text" name="email" ngModel required>
+            <ng-container *ngIf="usernameInput.touched">
+                <p class="error" *ngIf="usernameInput.errors?.['required']">
+                    Username is required!
+                </p>
+            </ng-container>
+            <label>Password: </label>
+            <input #passwordInput="ngModel" type="password" name="password" ngModel required>
+            <ng-container *ngIf="passwordInput.touched">
+                <p class="error" *ngIf="passwordInput.errors?.['required']">
+                    Password is required!
+                </p>
+            </ng-container>
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showpass">
-            <button (click)="loginHandler()">Log in</button>
+            <button>Log in</button>
         </form>
         <p>You don't have an account? <a routerLink="/users/register">Register here.</a></p>
     </div>

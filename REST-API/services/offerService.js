@@ -23,7 +23,7 @@ async function getByUserId(userId) {
 };
 
 async function getById(id) {
-    return Offer.find({ _id: id });
+    return Offer.findById(id);
 };
 
 async function create(offer) {

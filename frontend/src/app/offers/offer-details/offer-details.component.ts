@@ -15,7 +15,7 @@ export class OfferDetailsComponent implements OnInit {
     return this.authService.user;
   }
 
-  offerDetails: IOffer[] | null = null;
+  offerDetails: IOffer | null = null;
   constructor(private activatedRoute: ActivatedRoute, private offerService: OfferService, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -25,7 +25,6 @@ export class OfferDetailsComponent implements OnInit {
     );    
     this.offerService.loadOfferById(id).subscribe({
       next: (value) => {
-        console.log(value);
         
         this.offerDetails = value;
       },
