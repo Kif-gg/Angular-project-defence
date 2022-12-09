@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  get user() {
+    const { username, email } = this.authService.user!;
+    return { username, email }
+  }
+
+  @ViewChild(
+    NgForm,
+    { static: true }
+  ) createOffer!: ElementRef<HTMLFormElement>;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  editUserHandler(editForm: NgForm) {
+    if (editForm.invalid) {
+      return;
+    }
   }
 
 }

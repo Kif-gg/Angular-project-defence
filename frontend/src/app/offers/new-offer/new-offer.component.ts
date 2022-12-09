@@ -13,7 +13,7 @@ export class NewOfferComponent implements OnInit {
     { static: true }
   ) createOffer!: ElementRef<HTMLFormElement>;
 
-  
+
 
   constructor() {
   }
@@ -21,15 +21,23 @@ export class NewOfferComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createOfferHandler(): void {
-
+  createOfferHandler(createOfferForm: NgForm): void {
+    if (createOfferForm.invalid) {
+      return;
+    }
   }
 
-  selectedValue = '';
+  selectedBrandValue = '';
 
-  onSelectedHandler(value: string): void {
-    this.selectedValue = value;
+  onSelectedBrandHandler(value: string): void {
+    this.selectedBrandValue = value;    
   }
-  
+
+  selectedModelValue = '';
+
+  onSelectedModelHandler(value: string): void {
+    this.selectedModelValue = value;    
+  }
+
 
 }

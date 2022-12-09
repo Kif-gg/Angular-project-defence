@@ -15,25 +15,65 @@ export class OffersListComponent implements OnInit {
   constructor(private offerService: OfferService, private router: Router) { }
 
   ngOnInit(): void {
+    this.allOffersHandler();
+  }
+
+
+  allOffersHandler() {
+    this.myOffers = false;
     this.offerService.loadOffers().subscribe({
       next: (value) => {
         this.offersList = value;
-        
+
       },
       error: (err) => {
         console.error(err);
       }
     });
   }
-  selectedValue = '';
-  onSelectedHandler(value: string): void {
-    this.selectedValue = value;
+
+
+  selectedBrandValue = '';
+
+  onSelectedBrandHandler(value: string): void {
+    if (value == 'all') {
+      this.selectedBrandValue = '';
+    } else {
+      this.selectedBrandValue = value;
+    }
+  }
+
+  selectedModelValue = '';
+
+  onSelectedModelHandler(value: string): void {
+    if (value == 'all') {
+      this.selectedModelValue = '';
+    } else {
+      this.selectedModelValue = value;
+    }
   }
 
   detailsHandler(event: Event): void {
     const id = (event.target as HTMLElement).parentElement?.children[0].textContent;
-    
+
     this.router.navigate([`/data/offers/${id}`]);
+  }
+
+  userId = '638efa6932475472f4651e1e';
+
+  myOffers = false;
+
+  myOffersHandler() {
+    this.myOffers = true;
+    this.offerService.loadUserOffers(this.userId).subscribe({
+      next: (value) => {
+        this.offersList = value;
+
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 
 }

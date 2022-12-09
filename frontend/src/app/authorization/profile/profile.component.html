@@ -1,14 +1,15 @@
 <main>
 
     <div class="profile-box">
+        <h1>Profile info</h1>
 
         <label>Username: </label>
-        <h3>Pesho</h3>
+        <h3>{{user.username}}</h3>
 
         <label>Email: </label>
-        <h3>pesheto@abv.bg</h3>
+        <h3>{{user.email}}</h3>
 
-        <a routerLink="edituser.html">Edit profile</a>
+        <button class="edit">Edit data</button>
 
         <button class="delete">Delete your account</button>
 

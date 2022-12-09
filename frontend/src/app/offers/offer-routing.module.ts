@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "../shared/guards/auth-guard";
 import { NewOfferComponent } from "./new-offer/new-offer.component";
 import { OfferDetailsComponent } from "./offer-details/offer-details.component";
 import { OffersListComponent } from "./offers-list/offers-list.component";
@@ -11,21 +12,16 @@ const routes: Routes = [
                 path: 'offers',
                 component: OffersListComponent,
                 data: {
-                    title: 'All offers',
+                    title: 'Offers',
                     loginRequired: false
-                }
-            },
-            {
-                path: 'offers?where=_ownerId%3D%22{userId}%3D',
-                component: OffersListComponent,
-                data: {
-                    title: 'My offers',
-                    loginRequired: true
                 }
             },
             {
                 path: 'offers/create',
                 component: NewOfferComponent,
+                canActivate: [AuthGuard],
+
+
                 data: {
                     title: 'Create offer',
                     loginRequired: true
