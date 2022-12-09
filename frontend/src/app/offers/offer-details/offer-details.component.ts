@@ -23,26 +23,29 @@ export class OfferDetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private offerService: OfferService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.offerHandler();
+  }
+
+  offerHandler() {
     let id = 'alabala';
     this.activatedRoute.params.subscribe(
       (params: Params) => { id = params['id'] }
     );
     this.offerService.loadOfferById(id).subscribe({
-      next: (value) => {   
+      next: (value) => {
 
-        this.offerDetails = value;        
+        this.offerDetails = value;
       },
       error: (err) => {
         console.error(err);
       }
     })
   }
-
   detailsHandler() {
-    
+
   }
 
-  deleteHandler(): void {
+  deleteOfferHandler(): void {
 
   }
 
@@ -57,12 +60,12 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   toggleEditMode(): void {
+    this.offerHandler();
     this.editMode = !this.editMode;
     if (this.editMode) {
       this.formSubmitted = false;
     }
-    console.log(this.offerDetails);
-    
+
   }
 
 }

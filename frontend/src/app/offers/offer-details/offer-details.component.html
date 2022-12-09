@@ -89,11 +89,20 @@
                 <p><strong>{{offerDetails?.phoneNumber}}</strong></p>
             </ng-container>
 
-
-            <div *ngIf="offerDetails?._ownerId == user?._id" class="edit">
-                <button>Edit</button>
-                <button (click)="deleteHandler()">Delete</button>
-            </div>
+            <p>
+                <ng-template #edit>
+                    <button class="edit" [disabled]="editOffer.invalid" [type]="'submit'">Save</button>
+                </ng-template>
+                <ng-template #submit>
+                    <button class="submit" [type]="'button'" (click)="toggleEditMode()"
+                        *ngIf="offerDetails?._ownerId == user?._id" class="edit">Edit data
+                    </button>
+                </ng-template>
+            </p>
+            <ng-container *ngIf="offerDetails?._ownerId == user?._id">
+                <ng-container *ngTemplateOutlet="editMode ? edit : submit"></ng-container>
+                <button class="delete" *ngIf="!editMode" (click)="deleteOfferHandler()">Delete offer</button>
+            </ng-container>
         </div>
         <h2 *ngIf="offerDetails == undefined">Offer does not exist!</h2>
     </form>

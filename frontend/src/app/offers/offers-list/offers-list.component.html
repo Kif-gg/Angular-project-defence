@@ -443,7 +443,9 @@
             <p>{{offer.price}}</p>
             <p>{{offer.year}}</p>
             <img [attr.src]="offer.imageUrl">
-            <button class="details" (click)="detailsHandler($event)">Details</button>
+            <p>
+                <button class="details" (click)="detailsHandler($event)">Details</button>
+            </p>
         </div>
     </div>
     <h2 *ngIf="(offersList == null || offersList.length <= 0) && !myOffers">There aren't any offers yet!</h2>

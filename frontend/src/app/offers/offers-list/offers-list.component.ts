@@ -54,7 +54,7 @@ export class OffersListComponent implements OnInit {
   }
 
   detailsHandler(event: Event): void {
-    const id = (event.target as HTMLElement).parentElement?.children[0].textContent;
+    const id = (event.target as HTMLElement).parentElement?.parentElement?.children[0].textContent;
 
     this.router.navigate([`/data/offers/${id}`]);
   }
