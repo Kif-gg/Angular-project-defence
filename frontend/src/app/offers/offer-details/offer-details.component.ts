@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/authorization/auth.service';
 import { OfferService } from 'src/app/services/offer.service';
@@ -11,6 +12,9 @@ import { IOffer } from 'src/app/shared/interfaces/offer';
 })
 export class OfferDetailsComponent implements OnInit {
 
+  editMode = false;
+  formSubmitted = false;
+
   get user() {
     return this.authService.user;
   }
@@ -22,11 +26,11 @@ export class OfferDetailsComponent implements OnInit {
     let id = 'alabala';
     this.activatedRoute.params.subscribe(
       (params: Params) => { id = params['id'] }
-    );    
+    );
     this.offerService.loadOfferById(id).subscribe({
-      next: (value) => {
-        
-        this.offerDetails = value;
+      next: (value) => {   
+
+        this.offerDetails = value;        
       },
       error: (err) => {
         console.error(err);
@@ -34,12 +38,31 @@ export class OfferDetailsComponent implements OnInit {
     })
   }
 
+  detailsHandler() {
+    
+  }
+
   deleteHandler(): void {
 
   }
 
-  editHandler(): void {
+  saveEditedHandler(updateForm: NgForm): void {
+    this.formSubmitted = true;
+    if (updateForm.invalid) {
+      return;
+    }
+    const { price, year, description, imageUrl, phoneNumber } = updateForm.value;
+    this.offerDetails = { price, year, description, imageUrl, phoneNumber } as any;
+    this.toggleEditMode();
+  }
 
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+    if (this.editMode) {
+      this.formSubmitted = false;
+    }
+    console.log(this.offerDetails);
+    
   }
 
 }

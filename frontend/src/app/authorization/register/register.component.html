@@ -47,7 +47,7 @@
             </ng-container>
             <!-- TODO add event to show password -->
             <input type="checkbox" name="showrepass">
-            <button [disabled]="registerForm.invalid">Register</button>
+            <button class="submit" [disabled]="registerForm.invalid">Register</button>
         </form>
         <p>You already have an account? <a routerLink="/users/login">Login here.</a></p>
     </div>

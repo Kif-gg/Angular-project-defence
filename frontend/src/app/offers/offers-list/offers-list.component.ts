@@ -59,7 +59,7 @@ export class OffersListComponent implements OnInit {
     this.router.navigate([`/data/offers/${id}`]);
   }
 
-  userId = '638efa6932475472f4651e1e';
+  userId = '6393645801eed658592cf59c';
 
   myOffers = false;
 

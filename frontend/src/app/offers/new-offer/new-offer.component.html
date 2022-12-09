@@ -518,7 +518,7 @@
                 </div>
             </div>
             <label for="price">Price: </label>
-            <input type="number" name="price" #price="ngModel" ngModel required min="0">
+            <input type="number" name="price" #price="ngModel" ngModel required min="0"><span> lv.</span>
             <ng-container *ngIf="price.touched">
                 <p *ngIf="price.errors?.['required']">
                     Price is required!
@@ -555,7 +555,10 @@
                 </p>
             </ng-container>
             <label for="imageUrl">Image URL: </label>
-            <input type="text" name="imageUrl" #imageurl="ngModel" ngModel>
+            <input type="text" name="imageUrl" #imageurl="ngModel" ngModel maxlength="150">
+            <ng-container *ngIf="imageurl.errors?.['maxlength']">
+                <p>Image URL cannot be longer than 150 symbols!</p>
+            </ng-container>
             <label for="phoneNumber">Your phone number for contacts: </label>
             <input type="text" name="phoneNumber" #phonenumber="ngModel" ngModel required>
             <ng-container *ngIf="phonenumber.touched">
@@ -563,7 +566,7 @@
                     Phone number is required!
                 </p>
             </ng-container>
-            <button [disabled]="createOffer.invalid || brand.value == ''">Create your offer</button>
+            <button class="submit" [disabled]="createOffer.invalid || brand.value == ''">Create your offer</button>
         </form>
     </div>
 </main>

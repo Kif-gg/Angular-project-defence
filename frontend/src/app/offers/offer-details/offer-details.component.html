@@ -1,18 +1,100 @@
 <app-loader *ngIf="!offerDetails"></app-loader>
 <main>
 
-    <div class="details">
-        <h2>{{offerDetails?.vehicleBrand}}</h2>
-        <h3>{{offerDetails?.vehicleModel}}</h3>
-        <p>{{offerDetails?.price}}</p>
-        <p>{{offerDetails?.year}}</p>
-        <p>{{offerDetails?.description}}</p>
-        <img src="{{offerDetails?.imageUrl}}" alt="{{offerDetails?.vehicleBrand}} {{offerDetails?.vehicleModel}}"/>
-        <p>{{offerDetails?.phoneNumber}}</p>
-        <div *ngIf="offerDetails?._ownerId == user?._id" class="buttons-offer">
-            <button (click)="editHandler()">Edit</button>
-            <button (click)="deleteHandler()">Delete</button>
+    <form #editOffer="ngForm" (ngSubmit)="saveEditedHandler(editOffer)">
+        <div class="details">
+            <h2>Brand: </h2>
+            <p><strong>{{offerDetails?.vehicleBrand}}</strong></p>
+            <h2>Model: </h2>
+            <p><strong>{{offerDetails?.vehicleModel}}</strong></p>
+            <h2>Price: </h2>
+            <ng-container *ngIf="editMode">
+                <input type="number" #price="ngModel" [(ngModel)]="offerDetails!.price" name="price" required
+                    min="0"><span> lv.</span>
+                <ng-container *ngIf="price.touched || formSubmitted">
+                    <p class="error" *ngIf="price.errors?.['required']">
+                        Price is required!
+                    </p>
+                    <p class="error" *ngIf="price.errors?.['min']">
+                        Price cannot be negative!
+                    </p>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong>{{offerDetails?.price}} lv.</strong></p>
+            </ng-container>
+            <h2>Year: </h2>
+            <ng-container *ngIf="editMode">
+                <input type="number" #year="ngModel" [(ngModel)]="offerDetails!.year" name="year" required min="1970"
+                    max="2025">
+                <ng-container *ngIf="year.touched || formSubmitted">
+                    <p class="error" *ngIf="year.errors?.['required']">
+                        Year is required!
+                    </p>
+                    <p class="error" *ngIf="year.errors?.['min']">
+                        Year cannot be lesser than 1970!
+                    </p>
+                    <p class="error" *ngIf="year.errors?.['max']">
+                        Year cannot be more than 2025!
+                    </p>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong>{{offerDetails?.year}}</strong></p>
+            </ng-container>
+            <h2>Description: </h2>
+            <ng-container *ngIf="editMode">
+                <textarea rows="5" cols="51" #description="ngModel" [(ngModel)]="offerDetails!.description"
+                    name="description" required minlength="50" maxlength="255"></textarea>
+                <ng-container *ngIf="description.touched || formSubmitted">
+                    <p class="error" *ngIf="description.errors?.['required']">
+                        Description is required!
+                    </p>
+                    <p class="error" *ngIf="description.errors?.['minlength']">
+                        Description is too short!
+                    </p>
+                    <p class="error" *ngIf="description.errors?.['maxlength']">
+                        Description is too long!
+                    </p>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong>{{offerDetails?.description}}</strong></p>
+            </ng-container>
+            <h2>Image: </h2>
+            <ng-container *ngIf="editMode">
+                <input type="text" #imageurl="ngModel" [(ngModel)]="offerDetails!.imageUrl" name="imageUrl"
+                    maxlength="150">
+                <ng-container *ngIf="imageurl.touched || formSubmitted">
+                    <p class="error" *ngIf="imageurl.errors?.['maxlength']">
+                        URL cannot be more than 50 symbols!
+                    </p>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong><img src="{{offerDetails?.imageUrl}}"
+                            alt="{{offerDetails?.vehicleBrand}} {{offerDetails?.vehicleModel}}" /></strong></p>
+            </ng-container>
+            <h2>Phone number: </h2>
+            <ng-container *ngIf="editMode">
+                <input type="text" #phonenumber="ngModel" [(ngModel)]="offerDetails!.phoneNumber" name="phoneNumber"
+                    required>
+                <ng-container *ngIf="phonenumber.touched || formSubmitted">
+                    <p class="error" *ngIf="phonenumber.errors?.['required']">
+                        Phone number is required!
+                    </p>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong>{{offerDetails?.phoneNumber}}</strong></p>
+            </ng-container>
+
+
+            <div *ngIf="offerDetails?._ownerId == user?._id" class="edit">
+                <button>Edit</button>
+                <button (click)="deleteHandler()">Delete</button>
+            </div>
         </div>
-    </div>
-    <h2 *ngIf="offerDetails == undefined">Offer does not exist!</h2>
+        <h2 *ngIf="offerDetails == undefined">Offer does not exist!</h2>
+    </form>
 </main>

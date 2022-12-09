@@ -9,6 +9,9 @@ import { AuthService } from '../auth.service';
 })
 export class ProfileComponent implements OnInit {
 
+  editMode = false;
+  formSubmitted = false;
+
   get user() {
     const { username, email } = this.authService.user!;
     return { username, email }
@@ -17,17 +20,35 @@ export class ProfileComponent implements OnInit {
   @ViewChild(
     NgForm,
     { static: true }
-  ) createOffer!: ElementRef<HTMLFormElement>;
+  ) updateUser!: ElementRef<HTMLFormElement>;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  editUserHandler(editForm: NgForm) {
-    if (editForm.invalid) {
-      return;
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
+    if (this.editMode) {
+      this.formSubmitted = false;
     }
   }
+
+  saveUserDataHandler(updateForm: NgForm): void {
+    this.formSubmitted = true;
+    if (updateForm.invalid) {
+      return;
+    }
+    const { username, email } = updateForm.value;
+    this.authService.user = {
+      username, email
+    } as any;
+    this.toggleEditMode();
+  }
+
+  deleteProfileHandler() {
+    
+  }
+
 
 }

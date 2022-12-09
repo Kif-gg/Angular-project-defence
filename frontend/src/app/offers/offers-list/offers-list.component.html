@@ -430,7 +430,7 @@
         <input type="number" name="toYear">
         <label for="keyword">Keyword: </label>
         <input type="text" name="keyword">
-        <button>Search</button>
+        <button class="submit">Search</button>
     </form>
     <h1 *ngIf="brand.value !== '' && !myOffers">Browse offers for {{brand.value}} brand</h1>
     <h1 *ngIf="brand.value === '' && !myOffers">Browse offers for all brands</h1>

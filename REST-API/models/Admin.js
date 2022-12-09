@@ -4,8 +4,6 @@ const adminSchema = new Schema({
     email: { type: String, required: true, unique: true },
     hashedPassword: {
         type: String, required: true,
-        minLength: [5, 'Password must be minimum 5 characters!'],
-        maxLength: [30, 'Password cannot be longer than 30 characters!']
     },
     pin: {
         type: String, required: true,
