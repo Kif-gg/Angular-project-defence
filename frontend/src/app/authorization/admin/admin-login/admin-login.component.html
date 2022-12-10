@@ -1,0 +1,36 @@
+<main>
+
+    <div class="login-box">
+        <h1>LOG IN AS AN ADMIN</h1>
+        <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+            <label>Email: </label>
+            <input #emailInput="ngModel" type="text" name="email" ngModel required appEmail>
+            <ng-container *ngIf="emailInput.touched">
+                <p class="error" *ngIf="emailInput.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="emailInput.errors?.['appEmailValidator']">
+                    Email is invalid!
+                </p>
+            </ng-container>
+            <label>Password: </label>
+            <input #passwordInput="ngModel" [type]="passtext" name="password" ngModel required>
+            <ng-container *ngIf="passwordInput.touched">
+                <p class="error" *ngIf="passwordInput.errors?.['required']">
+                    Password is required!
+                </p>
+            </ng-container>
+            <span (mouseenter)="showPass()" (mouseleave)="hidePass()">👁️</span>
+            <label>PIN: </label>
+            <input #pinInput="ngModel" [type]="pintext" name="pin" ngModel required>
+            <ng-container *ngIf="pinInput.touched">
+                <p class="error" *ngIf="pinInput.errors?.['required']">
+                    PIN is required!
+                </p>
+            </ng-container>
+            <span (mouseenter)="showPIN()" (mouseleave)="hidePIN()">👁️</span>
+            <button class="submit" [disabled]="loginForm.invalid">Log in</button>
+        </form>
+    </div>
+
+</main>

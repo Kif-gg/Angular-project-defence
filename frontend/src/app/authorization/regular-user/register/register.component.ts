@@ -13,4 +13,24 @@ export class RegisterComponent {
   registerHandler(registerForm: NgForm): void {
 
   }
+
+  passtext = 'password';
+
+  showPass() {
+    this.passtext = 'text';
+  }
+
+  hidePass() {
+    this.passtext = 'password';
+  }
+
+  repasstext = 'password';
+
+  showRepass() {
+    this.passtext = 'text';
+  }
+
+  hideRepass() {
+    this.passtext = 'password';
+  }
 }

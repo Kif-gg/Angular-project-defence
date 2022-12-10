@@ -442,7 +442,7 @@
             <h3>{{offer.vehicleModel}}</h3>
             <p>{{offer.price}}</p>
             <p>{{offer.year}}</p>
-            <img [attr.src]="offer.imageUrl">
+            <img [attr.src]="offer.imageUrl" alt="Car image">
             <p>
                 <button class="details" (click)="detailsHandler($event)">Details</button>
             </p>

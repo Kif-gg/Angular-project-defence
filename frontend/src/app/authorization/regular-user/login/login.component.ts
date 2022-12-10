@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,12 +25,22 @@ export class LoginComponent {
     if (loginForm.invalid) {
       return
     }
-    
+
     this.authService.user = {
-      _id: 'adjwiaow99a4daw48d',
-      username: 'Alabala'
+      _id: '6391c96cdbd998ad505235e7',
+      username: 'Bob'
     } as any;
     this.router.navigate(['/']);
+  }
+
+  passtext = 'password';
+
+  showPass() {
+    this.passtext = 'text';
+  }
+
+  hidePass() {
+    this.passtext = 'password';
   }
 
 }
