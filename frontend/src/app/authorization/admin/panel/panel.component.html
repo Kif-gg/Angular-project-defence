@@ -13,8 +13,6 @@
         <div *ngFor="let user of usersList" class="user-card">
             <p style="display:none">{{user._id}}</p>
             <h2>{{user.username}}</h2>
-            <h3>{{user.email}}</h3>
-            <p>{{user.blocked}}</p>
             <p>
                 <button class="details" (click)="detailsHandler($event)">Details</button>
             </p>

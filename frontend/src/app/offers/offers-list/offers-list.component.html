@@ -441,9 +441,9 @@
             <p style="display:none">{{offer._id}}</p>
             <h2>{{offer.vehicleBrand}}</h2>
             <h3>{{offer.vehicleModel}}</h3>
-            <p>{{offer.price}}</p>
+            <p>{{offer.price}} lv.</p>
             <p>{{offer.year}}</p>
-            <img [attr.src]="offer.imageUrl" alt="Car image">
+            <img [attr.src]="offer.imageUrl" alt="Car image" width="20%" height="20%">
             <p>
                 <button class="details" (click)="detailsHandler($event)">Details</button>
             </p>

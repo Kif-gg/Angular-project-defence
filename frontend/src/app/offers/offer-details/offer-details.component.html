@@ -1,5 +1,6 @@
 <main>
     <app-loader *ngIf="offerDetails == null "></app-loader>
+    <a routerLink="/data/offers">Go back</a>
     
     <form #editOffer="ngForm" (ngSubmit)="saveEditedHandler(editOffer)">
         <div class="details">
