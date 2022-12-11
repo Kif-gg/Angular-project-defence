@@ -23,8 +23,17 @@ export class PanelComponent implements OnInit {
     this.adminService.loadUsers().subscribe({
       next: (value) => {
         this.usersList = value;
-        console.log(value);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
 
+  blockedUsersHandler() {
+    this.adminService.loadBlockedUsers().subscribe({
+      next: (value) => {
+        this.usersList = value;
       },
       error: (err) => {
         console.error(err);
@@ -34,10 +43,8 @@ export class PanelComponent implements OnInit {
 
   detailsHandler(event: Event): void {
     const id = (event.target as HTMLElement).parentElement?.parentElement?.children[0].textContent;
-    console.log(id);
 
-
-    // this.router.navigate([`/data/offers/${id}`]);
+    this.router.navigate([`/o074dm1n/h1dd3n4ddr35s/570p/panel/${id}`]);
   }
   
 }

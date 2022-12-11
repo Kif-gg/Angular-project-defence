@@ -51,6 +51,11 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  cancelEditing() {
+    this.toggleEditMode()
+    return;
+  }
+
   deleteProfileHandler() {
 
   }

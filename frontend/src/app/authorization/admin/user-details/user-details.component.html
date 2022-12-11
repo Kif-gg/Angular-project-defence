@@ -1,1 +1,56 @@
-<p>user-details works!</p>
+<main *ngIf="userDetails">
+
+    <form #updateUser="ngForm" (ngSubmit)="saveEditedHandler(updateUser)">
+        <div class="profile-box">
+            <h1>Profile info</h1>
+
+            <h2>Username: </h2>
+            <ng-container *ngIf="editMode">
+                <input type="text" #username="ngModel" [(ngModel)]="userDetails!.username" name="username" required
+                    minlength="3" maxlength="12">
+                <ng-container *ngIf="username.touched || formSubmitted">
+                    <p class="error" *ngIf="username.errors?.['required']">
+                        Username is required!
+                    </p>
+                    <p class="error" *ngIf="username.errors?.['minlength']">
+                        Username is too short!
+                    </p>
+                    <p class="error" *ngIf="username.errors?.['maxlength']">
+                        Username is too long!
+                    </p>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong>{{userDetails!.username}}</strong></p>
+            </ng-container>
+            <h2>Email: </h2>
+            <ng-container *ngIf="editMode">
+                <input type="text" #email="ngModel" [(ngModel)]="userDetails!.email" name="email" required appEmail>
+                <ng-container *ngIf="email.touched || formSubmitted">
+                    <p class="error" *ngIf="email.errors?.['required']">
+                        Email is required!
+                    </p>
+                    <p class="error" *ngIf="email.errors?.['appEmailValidator']">
+                        Email is invalid!
+                    </p>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong>{{userDetails!.email}}</strong></p>
+            </ng-container>
+            <p>
+                <ng-template #edit>
+                    <button class="edit" [disabled]="updateUser.invalid" [type]="'submit'">Save</button>
+                    <button class="cancel" (click)="cancelEditing()">Cancel</button>
+                </ng-template>
+                <ng-template #submit>
+                    <button class="submit" [type]="'button'" (click)="toggleEditMode()">Edit data</button>
+                </ng-template>
+            </p>
+            <ng-container *ngTemplateOutlet="editMode ? edit : submit"></ng-container>
+            <button class="delete" *ngIf="!editMode" (click)="deleteProfileHandler()">Delete account</button>
+
+        </div>
+    </form>
+
+</main>

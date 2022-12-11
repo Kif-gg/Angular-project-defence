@@ -41,22 +41,29 @@ export class OfferDetailsComponent implements OnInit {
       }
     })
   }
-  detailsHandler() {
-
-  }
 
   deleteOfferHandler(): void {
 
   }
 
   saveEditedHandler(updateForm: NgForm): void {
-    this.formSubmitted = true;
-    if (updateForm.invalid) {
+    if (confirm('Are you sure you want to update current offer\'s data?') == true) {
+
+      this.formSubmitted = true;
+      if (updateForm.invalid) {
+        return;
+      }
+      const { price, year, description, imageUrl, phoneNumber } = updateForm.value;
+      this.offerDetails = { price, year, description, imageUrl, phoneNumber } as any;
+      this.toggleEditMode();
+    } else {
       return;
     }
-    const { price, year, description, imageUrl, phoneNumber } = updateForm.value;
-    this.offerDetails = { price, year, description, imageUrl, phoneNumber } as any;
-    this.toggleEditMode();
+  }
+
+  cancelEditing() {
+    this.toggleEditMode()
+    return;
   }
 
   toggleEditMode(): void {

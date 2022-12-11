@@ -92,6 +92,7 @@
             <p>
                 <ng-template #edit>
                     <button class="edit" [disabled]="editOffer.invalid" [type]="'submit'">Save</button>
+                    <button class="cancel" (click)="cancelEditing()">Cancel</button>
                 </ng-template>
                 <ng-template #submit>
                     <button class="submit" [type]="'button'" (click)="toggleEditMode()"

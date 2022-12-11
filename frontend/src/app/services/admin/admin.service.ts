@@ -24,5 +24,8 @@ export class AdminService {
     return this.httpClient.get<IUser[]>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/users/blocked`);
   }
 
+  loadUserById(id: string) {
+    return this.httpClient.get<IUser>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/users/${id}`)
+  }
 
 }

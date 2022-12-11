@@ -3,6 +3,7 @@ import { AuthGuard } from "../shared/guards/auth-guard";
 import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 import { AdminLogoutComponent } from "./admin/admin-logout/admin-logout.component";
 import { PanelComponent } from "./admin/panel/panel.component";
+import { UserDetailsComponent } from "./admin/user-details/user-details.component";
 import { LoginComponent } from "./regular-user/login/login.component";
 import { LogoutComponent } from "./regular-user/logout/logout.component";
 import { ProfileComponent } from "./regular-user/profile/profile.component";
@@ -70,6 +71,15 @@ const routes: Routes = [
     {
         path: 'o074dm1n/h1dd3n4ddr35s/570p/panel',
         component: PanelComponent,
+        canActivate: [AuthGuard],
+        data: {
+            loginRequired: true,
+            admin: true,
+        }
+    },
+    {
+        path: 'o074dm1n/h1dd3n4ddr35s/570p/panel/:userId',
+        component: UserDetailsComponent,
         canActivate: [AuthGuard],
         data: {
             loginRequired: true,

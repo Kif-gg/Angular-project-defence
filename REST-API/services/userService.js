@@ -2,6 +2,7 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const BlacklistedToken = require('../models/BlacklistedToken');
+const { parseError } = require('../util/parser');
 
 
 const secret = 'xldfhg783o4riomnjhdgf';
