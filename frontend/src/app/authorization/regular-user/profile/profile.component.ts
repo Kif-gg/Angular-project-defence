@@ -35,19 +35,24 @@ export class ProfileComponent implements OnInit {
   }
 
   saveUserDataHandler(updateForm: NgForm): void {
-    this.formSubmitted = true;
-    if (updateForm.invalid) {
+    if (confirm('Are you sure you want to update your current profile data?') == true) {
+
+      this.formSubmitted = true;
+      if (updateForm.invalid) {
+        return;
+      }
+      const { username, email } = updateForm.value;
+      this.authService.user = {
+        username, email
+      } as any;
+      this.toggleEditMode();
+    } else {
       return;
     }
-    const { username, email } = updateForm.value;
-    this.authService.user = {
-      username, email
-    } as any;
-    this.toggleEditMode();
   }
 
   deleteProfileHandler() {
-    
+
   }
 
 

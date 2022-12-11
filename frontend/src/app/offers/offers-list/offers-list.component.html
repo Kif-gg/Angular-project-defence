@@ -1,4 +1,3 @@
-<app-loader *ngIf="!offersList"></app-loader>
 <main>
     <a routerLink="/data/offers" (click)="myOffersHandler()">My offers</a>
     <a routerLink="/data/offers/create">Create your new offer</a>
@@ -435,6 +434,8 @@
     <h1 *ngIf="brand.value !== '' && !myOffers">Browse offers for {{brand.value}} brand</h1>
     <h1 *ngIf="brand.value === '' && !myOffers">Browse offers for all brands</h1>
     <h1 *ngIf="myOffers">Check your offers</h1>
+    <app-loader *ngIf="offersList == null"></app-loader>
+
     <div *ngIf="offersList != null" class="all-offers">
         <div *ngFor="let offer of offersList" class="offer-card">
             <p style="display:none">{{offer._id}}</p>

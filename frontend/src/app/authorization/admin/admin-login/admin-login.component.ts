@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AdminLoginComponent {
     { static: true }
   ) loginForm!: ElementRef<HTMLInputElement>;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   loginHandler(loginForm: NgForm): void {
@@ -27,6 +28,8 @@ export class AdminLoginComponent {
       email: 'rbs_administration@admin.com',
       pin: '14552405',
     } as any;
+
+    this.router.navigate(['/o074dm1n/h1dd3n4ddr35s/570p/panel']);
 
   }
 

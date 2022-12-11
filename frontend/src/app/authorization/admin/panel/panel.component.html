@@ -1,0 +1,25 @@
+<nav>
+    <a routerLink="/o074dm1n/h1dd3n4ddr35s/570p/panel" title="All users" (click)="allUsersHandler()">All users list</a>
+    <a routerLink="o074dm1n/h1dd3n4ddr35s/570p/panel" title="Blocked users">Blocked users list</a>
+    <a routerLink="/o074dm1n/h1dd3n4ddr35s/570p/logout" title="Logout">Logout</a>
+</nav>
+
+
+<main>
+    <h1>WELCOME, ADMIN!</h1>
+    <app-loader *ngIf="usersList == null"></app-loader>
+    
+    <div *ngIf="usersList != null" class="all-users">
+        <div *ngFor="let user of usersList" class="user-card">
+            <p style="display:none">{{user._id}}</p>
+            <h2>{{user.username}}</h2>
+            <h3>{{user.email}}</h3>
+            <p>{{user.blocked}}</p>
+            <p>
+                <button class="details" (click)="detailsHandler($event)">Details</button>
+            </p>
+        </div>
+    </div>
+    <h2 *ngIf="(usersList== null || usersList.length <= 0)">No users to show!</h2>
+
+</main>

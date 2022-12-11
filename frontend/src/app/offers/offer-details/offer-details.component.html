@@ -1,6 +1,6 @@
-<app-loader *ngIf="!offerDetails"></app-loader>
 <main>
-
+    <app-loader *ngIf="offerDetails == null "></app-loader>
+    
     <form #editOffer="ngForm" (ngSubmit)="saveEditedHandler(editOffer)">
         <div class="details">
             <h2>Brand: </h2>

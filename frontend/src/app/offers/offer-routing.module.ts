@@ -13,18 +13,18 @@ const routes: Routes = [
                 component: OffersListComponent,
                 data: {
                     title: 'Offers',
-                    loginRequired: false
+                    loginRequired: false,
+                    admin: false
                 }
             },
             {
                 path: 'offers/create',
                 component: NewOfferComponent,
                 canActivate: [AuthGuard],
-
-
                 data: {
                     title: 'Create offer',
-                    loginRequired: true
+                    loginRequired: true,
+                    admin: false
                 }
             },
             {
@@ -32,7 +32,8 @@ const routes: Routes = [
                 component: OfferDetailsComponent,
                 data: {
                     title: 'Details',
-                    loginRequired: false
+                    loginRequired: false,
+                    admin: false
                 }
             },
         ]

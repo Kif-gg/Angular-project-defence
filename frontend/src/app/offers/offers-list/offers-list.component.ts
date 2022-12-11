@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IOffer } from '../../shared/interfaces/offer';
-import { OfferService } from '../../services/offer.service';
+import { OfferService } from '../../services/offers/offer.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -59,7 +59,7 @@ export class OffersListComponent implements OnInit {
     this.router.navigate([`/data/offers/${id}`]);
   }
 
-  userId = '6393645801eed658592cf59c';
+  userId = '6391c96cdbd998ad505235e7';
 
   myOffers = false;
 

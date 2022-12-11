@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminLogoutComponent } from './admin/admin-logout/admin-logout.component';
-import { UserListComponent } from './admin/user-list/user-list.component';
 import { UserDetailsComponent } from './admin/user-details/user-details.component';
+import { PanelComponent } from './admin/panel/panel.component';
 
 
 
@@ -22,8 +22,8 @@ import { UserDetailsComponent } from './admin/user-details/user-details.componen
     ProfileComponent,
     AdminLoginComponent,
     AdminLogoutComponent,
-    UserListComponent,
     UserDetailsComponent,
+    PanelComponent,
   ],
   imports: [
     CommonModule,

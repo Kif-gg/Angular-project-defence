@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/authorization/auth.service';
-import { OfferService } from 'src/app/services/offer.service';
+import { OfferService } from '../../services//offers/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer';
 
 @Component({

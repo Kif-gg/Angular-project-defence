@@ -28,7 +28,8 @@ export class LoginComponent {
 
     this.authService.user = {
       _id: '6391c96cdbd998ad505235e7',
-      username: 'Bob'
+      username: 'Bob',
+      email: 'bob@abv.bg'
     } as any;
     this.router.navigate(['/']);
   }

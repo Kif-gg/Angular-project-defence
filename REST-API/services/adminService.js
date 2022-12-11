@@ -60,8 +60,8 @@ async function getAllUsers() {
     return User.find({});
 };
 
-async function getUsersByUsername(username) {
-    return User.find({ username: username });
+async function getUserByUsername(username) {
+    return User.findOne({ username: username }, { hashedPassword: 0 });
 };
 
 async function getBlockedUsers() {
@@ -85,7 +85,7 @@ async function deleteById(id) {
 module.exports = {
     adminLogin,
     getAllUsers,
-    getUsersByUsername,
+    getUserByUsername,
     getBlockedUsers,
     update,
     deleteById,
