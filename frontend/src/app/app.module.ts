@@ -8,10 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { OffersModule } from './offers/offers.module';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { BACKEND_ERROR } from './shared/error';
+import { BehaviorSubject } from 'rxjs';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,12 @@ import { OffersModule } from './offers/offers.module';
     AuthorizationModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: BACKEND_ERROR,
+      useValue: new BehaviorSubject(null)
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

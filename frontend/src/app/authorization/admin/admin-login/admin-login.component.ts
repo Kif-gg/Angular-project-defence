@@ -19,17 +19,16 @@ export class AdminLoginComponent {
 
 
   loginHandler(loginForm: NgForm): void {
-    // TODO change this to admin from database
     if (loginForm.invalid) {
       return
     }
-    this.authService.admin = {
-      _id: '638b38f932475472f4651dd2',
-      email: 'rbs_administration@admin.com',
-      pin: '14552405',
-    } as any;
 
-    this.router.navigate(['/o074dm1n/h1dd3n4ddr35s/570p/panel']);
+    const { email, password, pin } = loginForm.value;
+    this.authService.adminLogin(email, password, pin).subscribe(admin => {
+      this.authService.admin = admin;
+      this.router.navigate(['/o074dm1n/h1dd3n4ddr35s/570p/panel']);
+    })
+
 
   }
 

@@ -26,12 +26,11 @@ export class LoginComponent {
       return
     }
 
-    this.authService.user = {
-      _id: '6391c96cdbd998ad505235e7',
-      username: 'Bob',
-      email: 'bob@abv.bg'
-    } as any;
-    this.router.navigate(['/']);
+    const { username, password } = loginForm.value;
+    this.authService.login(username, password).subscribe(user => {
+      this.router.navigate(['/']);
+    });
+
   }
 
   passtext = 'password';

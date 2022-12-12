@@ -1,13 +1,13 @@
 const { adminLogin, getAllUsers, getUserByUsername, getBlockedUsers, update, deleteById } = require('../services/adminService');
 const { logout } = require('../services/userService');
-const { hasUser } = require('../middlewares/guards');
+const { hasUser, isGuest } = require('../middlewares/guards');
 const { parseError } = require('../util/parser');
 const User = require('../models/User');
 
 const adminController = require('express').Router();
 
 
-adminController.post('/h1dd3n4ddr35s/570p/l091n', async (req, res) => {
+adminController.post('/h1dd3n4ddr35s/570p/l091n', isGuest(), async (req, res) => {
     try {
         const token = await adminLogin(req.body.email, req.body.password, req.body.pin);
         res.json(token);
@@ -23,7 +23,7 @@ adminController.get('/h1dd3n4ddr35s/570p/logout', async (req, res) => {
     res.status(204).end();
 });
 
-adminController.get('/h1dd3n4ddr35s/570p/users', /* hasUser(), */ async (req, res) => {
+adminController.get('/h1dd3n4ddr35s/570p/users', hasUser(), async (req, res) => {
     try {
         let users = [];
         if (req.query.where) {
@@ -39,7 +39,7 @@ adminController.get('/h1dd3n4ddr35s/570p/users', /* hasUser(), */ async (req, re
     }
 });
 
-adminController.get('/h1dd3n4ddr35s/570p/users/blocked', /* hasUser(), */  async (req, res) => {
+adminController.get('/h1dd3n4ddr35s/570p/users/blocked', hasUser(),  async (req, res) => {
     try {
         const blocked = await getBlockedUsers();
         res.json(blocked);
@@ -49,7 +49,7 @@ adminController.get('/h1dd3n4ddr35s/570p/users/blocked', /* hasUser(), */  async
     }
 });
 
-adminController.get('/h1dd3n4ddr35s/570p/users/:userId', /* hasUser(), */  async (req, res) => {
+adminController.get('/h1dd3n4ddr35s/570p/users/:userId', hasUser(),  async (req, res) => {
     try {
         const user = await User.findById(req.params.userId);
         if (!user) {
@@ -62,7 +62,7 @@ adminController.get('/h1dd3n4ddr35s/570p/users/:userId', /* hasUser(), */  async
     }
 });
 
-adminController.put('/h1dd3n4ddr35s/570p/users/:userId', /* hasUser(), */  async (req, res) => {
+adminController.put('/h1dd3n4ddr35s/570p/users/:userId', hasUser(),  async (req, res) => {
     try {
         const user = User.findById(req.params.userId);
         if (!user) {
@@ -76,7 +76,7 @@ adminController.put('/h1dd3n4ddr35s/570p/users/:userId', /* hasUser(), */  async
     }
 });
 
-adminController.delete('/h1dd3n4ddr35s/570p/users/:userId', /* hasUser(), */  async (req, res) => {
+adminController.delete('/h1dd3n4ddr35s/570p/users/:userId', hasUser(),  async (req, res) => {
     try {
         await deleteById(req.params.userId)
         res.status(204).end();

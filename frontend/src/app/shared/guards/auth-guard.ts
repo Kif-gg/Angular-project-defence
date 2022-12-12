@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
+import { map, Observable, take } from "rxjs";
 import { AuthService } from "src/app/authorization/auth.service";
 
 @Injectable({
@@ -13,13 +13,19 @@ export class AuthGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        const loginRequired = route.data['loginRequired'];
-        
-        
-        if ((loginRequired == undefined || this.authService.isLoggedIn == loginRequired) || this.authService.isAdmin == loginRequired) {
-            return true;
-        }
-        return this.router.createUrlTree(['/users/login']);
+        return this.authService.user$.pipe(
+            take(1),
+            map(user => {
+                const loginRequired = route.data['loginRequired'];
+                
+                if ((loginRequired == undefined || !!user == loginRequired) || this.authService.isAdmin == loginRequired) {
+                    return true;
+                }
+                return !!user ? 
+                this.router.createUrlTree(['/']) :
+                this.router.createUrlTree(['/users/login']);
+            })
+        )
     }
 
 }

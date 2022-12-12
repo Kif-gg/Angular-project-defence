@@ -26,7 +26,7 @@ authController.post('/register',
         }
     });
 
-authController.post('/login', async (req, res) => {
+authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.username, req.body.password);
         res.json(token);

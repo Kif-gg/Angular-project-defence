@@ -1,3 +1,5 @@
-<app-navigation *ngIf="admin == false"></app-navigation>
-<router-outlet></router-outlet>
-<app-footer *ngIf="admin == false"></app-footer>
+<app-authenticate>
+    <app-navigation *ngIf="admin == false"></app-navigation>
+    <router-outlet></router-outlet>
+    <app-footer *ngIf="admin == false"></app-footer>
+</app-authenticate>
