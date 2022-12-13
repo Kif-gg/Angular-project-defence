@@ -3,5 +3,7 @@ export interface IUser {
     username: string;
     email: string;
     hashedPassword: string;
+    pin: string;
+    role: string;
     blocked: boolean;
 }

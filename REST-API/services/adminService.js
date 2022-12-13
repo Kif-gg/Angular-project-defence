@@ -1,4 +1,3 @@
-const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
@@ -8,7 +7,7 @@ const { secret } = require('../services/userService');
 let timesUntilBlock = 6;
 
 async function adminLogin(email, password, pin) {
-    const admin = await Admin.findOne({ email }).collation({ locale: 'en', strength: 2 });
+    const admin = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
 
     if (timesUntilBlock <= 0) {
         admin.blocked = true;
@@ -57,15 +56,15 @@ function adminCreateToken(admin) {
 
 
 async function getAllUsers() {
-    return User.find({});
+    return User.find({ role: 'user' });
 };
 
 async function getUserByUsername(username) {
-    return User.findOne({ username: username }, { hashedPassword: 0 });
+    return User.findOne({ username: username }, { hashedPassword: 0 }).where('role').equals('user');
 };
 
 async function getBlockedUsers() {
-    return User.find({ blocked: true });
+    return User.find({ blocked: true }).where('role').equals('user');
 };
 
 async function update(id, user) {

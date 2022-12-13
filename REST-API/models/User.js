@@ -10,6 +10,8 @@ const userSchema = new Schema({
     hashedPassword: {
         type: String, required: true,
     },
+    pin: { type: String, required: true, default: '' },
+    role: { type: String, required: true, default: 'user' },
     blocked: { type: Boolean, required: true, default: false }
 });
 

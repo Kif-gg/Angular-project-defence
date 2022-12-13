@@ -1,7 +1,7 @@
 const { register, login, logout, deleteUserById, update } = require('../services/userService');
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../util/parser');
-const { hasUser } = require('../middlewares/guards');
+const { hasUser, isGuest } = require('../middlewares/guards');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
@@ -44,7 +44,7 @@ authController.get('/logout', async (req, res) => {
 });
 
 
-authController.delete('/:userId/profile', hasUser(), async (req, res, next) => {
+authController.delete('/profile', hasUser(), async (req, res, next) => {
     try {
         const user = await User.findById(req.params.userId);
         if (!user) {
@@ -62,10 +62,11 @@ authController.delete('/:userId/profile', hasUser(), async (req, res, next) => {
     }
 });
 
-authController.get('/:userId/profile', hasUser(), async (req, res, next) => {
+authController.get('/profile', hasUser(), async (req, res, next) => {
     console.log(req.params);
     try {
         const user = await User.findById(req.params.userId);
+        console.log(user);
         if (!user) {
             throw new Error(`User with id ${req.params.userId} does not exist!`);
         }
@@ -76,7 +77,7 @@ authController.get('/:userId/profile', hasUser(), async (req, res, next) => {
     }
 });
 
-authController.put('/:userId/profile', hasUser(), async (req, res, next) => {
+authController.put('/profile', hasUser(), async (req, res, next) => {
     try {
         const user = await User.findById(req.params.userId);
         if (!user) {
