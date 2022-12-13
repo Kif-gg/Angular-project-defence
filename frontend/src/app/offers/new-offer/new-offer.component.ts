@@ -1,12 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { OfferService } from 'src/app/services/offers/offer.service';
 
 @Component({
   selector: 'app-new-offer',
   templateUrl: './new-offer.component.html',
   styleUrls: ['./new-offer.component.css']
 })
-export class NewOfferComponent implements OnInit {
+export class NewOfferComponent {
 
   @ViewChild(
     NgForm,
@@ -15,16 +17,18 @@ export class NewOfferComponent implements OnInit {
 
 
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  constructor(private offerService: OfferService, private router: Router) { }
 
   createOfferHandler(createOfferForm: NgForm): void {
     if (createOfferForm.invalid) {
       return;
     }
+    const {brand, model, price, year, description, imageUrl, phoneNumber} = createOfferForm.value;
+
+    this.offerService.createOffer(brand, model, price, year, description, imageUrl, phoneNumber)
+    .subscribe(() => {
+      this.router.navigate(['/data/offers']);
+    })
   }
 
   selectedBrandValue = '';

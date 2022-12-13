@@ -59,13 +59,13 @@ export class OffersListComponent implements OnInit {
     this.router.navigate([`/data/offers/${id}`]);
   }
 
-  userId = '6391c96cdbd998ad505235e7';
+  userId = sessionStorage.getItem('userId');
 
   myOffers = false;
 
   myOffersHandler() {
     this.myOffers = true;
-    this.offerService.loadUserOffers(this.userId).subscribe({
+    this.offerService.loadUserOffers(this.userId!).subscribe({
       next: (value) => {
         this.offersList = value;
 

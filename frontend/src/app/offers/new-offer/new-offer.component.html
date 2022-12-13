@@ -1,7 +1,7 @@
 <main>
     <div class="new-offer-box">
         <h1>Create new offer</h1>
-        <form #createOffer="ngForm" (submit)="createOfferHandler(createOffer)">
+        <form #createOffer="ngForm" (ngSubmit)="createOfferHandler(createOffer)">
             <div id="brand-vehicle-select">
                 <label for="brand">Brand: </label>
                 <select name="brand" #brand ngModel (change)="onSelectedBrandHandler(brand.value)">

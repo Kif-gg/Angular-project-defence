@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, PreloadingStrategy, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { MainContentComponent } from './core/main-content/main-content.component';
 import { FaqComponent } from './core/faq/faq.component';
 import { AboutComponent } from './core/about/about.component';
 import { ErrorComponent } from './core/error/error.component';
+import { RequestRepairComponent } from './request-repair/request-repair.component';
+import { AuthGuard } from './shared/guards/auth-guard';
 
 const routes: Routes = [
   {
@@ -13,7 +15,6 @@ const routes: Routes = [
     component: MainContentComponent,
     data: {
       title: 'RBS-Vehicles Express',
-      
     }
   },
   {
@@ -21,7 +22,6 @@ const routes: Routes = [
     component: AboutComponent,
     data: {
       title: 'About us',
-      
     }
   },
   {
@@ -29,7 +29,15 @@ const routes: Routes = [
     component: FaqComponent,
     data: {
       title: 'Frequently Asked Questions',
-      
+    }
+  },
+  {
+    path: 'data',
+    component: RequestRepairComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Request our services',
+      loginRequired: true
     }
   },
   {
@@ -37,12 +45,14 @@ const routes: Routes = [
     component: NotFoundComponent,
     data: {
       title: 'Oops...!',
-      
     }
   },
   {
     path: 'error',
     component: ErrorComponent,
+    data: {
+      title: 'An error occurred...!'
+    }
   },
   {
     path: 'users',
@@ -63,7 +73,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

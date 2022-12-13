@@ -1,7 +1,7 @@
 const { Schema, model, Types: { ObjectId } } = require('mongoose');
 
 const repairRequestSchema = new Schema({
-    imageUrl: { type: String, default: '' },
+    imageUrl: { type: String, required: [true, 'Please enter URL of image!'],  maxLength: [150, 'Image URL cannot be longer than 150 symbols!'] },
     problem: {
         type: String, required: true,
         minLength: [10, 'Description must be minimum 10 characters!'],

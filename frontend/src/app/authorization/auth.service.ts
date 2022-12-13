@@ -41,6 +41,7 @@ export class AuthService implements OnDestroy {
   }
 
   // ==========================================
+  // ==========================================
 
   register(username: string, email: string, password: string, repass: string) {
     return this.http.post<IUser>(`${apiUrl}/users/register`, { username, email, password, repass })
@@ -55,12 +56,17 @@ export class AuthService implements OnDestroy {
   getProfile() {
     return this.http.get<IUser>(`${apiUrl}/users/profile`)
       .pipe(
-        tap(() => this.user$$.next(null)),
+        tap(user => this.user$$.next(user)),
         catchError((err) => {
           this.user$$.next(null);
-          return of(err); //[err]
+          return [err];
         })
       );
+  }
+
+  updateProfile(id: string, username: string, email: string) {
+    return this.http.put<IUser>(`${apiUrl}/users/profile`, { id, username, email })
+      .pipe(tap(user => this.user$$.next(user)));
   }
 
   logout() {
