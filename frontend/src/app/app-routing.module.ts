@@ -4,6 +4,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { MainContentComponent } from './core/main-content/main-content.component';
 import { FaqComponent } from './core/faq/faq.component';
 import { AboutComponent } from './core/about/about.component';
+import { ErrorComponent } from './core/error/error.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
     component: MainContentComponent,
     data: {
       title: 'RBS-Vehicles Express',
-      admin: false
+      
     }
   },
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
     component: AboutComponent,
     data: {
       title: 'About us',
-      admin: false
+      
     }
   },
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
     component: FaqComponent,
     data: {
       title: 'Frequently Asked Questions',
-      admin: false
+      
     }
   },
   {
@@ -36,8 +37,24 @@ const routes: Routes = [
     component: NotFoundComponent,
     data: {
       title: 'Oops...!',
-      admin: false
+      
     }
+  },
+  {
+    path: 'error',
+    component: ErrorComponent,
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./authorization/authorization.module').then(m => m.AuthorizationModule)
+  },
+  {
+    path: 'data',
+    loadChildren: () => import('./offers/offers.module').then(m => m.OffersModule)
+  },
+  {
+    path: 'o074dm1n/h1dd3n4ddr35s',
+    loadChildren: () => import('./auth-admin/auth-admin.module').then(m => m.AuthAdminModule)
   },
   {
     path: '**',

@@ -1,7 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { BehaviorSubject, debounce, debounceTime, filter, take } from 'rxjs';
+import { Component } from '@angular/core';
 import { AuthService } from 'src/app/authorization/auth.service';
-import { BACKEND_ERROR } from 'src/app/shared/error';
 
 @Component({
   selector: 'app-navigation',
@@ -17,16 +15,7 @@ export class NavigationComponent {
   get user() {
     return this.authService.user;
   }
-
-  backendError$ = this.backendError.asObservable();
-
-  
-  constructor(@Inject(BACKEND_ERROR) private backendError: BehaviorSubject<Error | null>, private authService: AuthService) {
-    
-    this.backendError$.pipe(debounceTime(0), take(1), filter(val => !val)).subscribe(() => {
-      
-    })
-  }
+ constructor(private authService: AuthService) { }
 
 
 }

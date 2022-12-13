@@ -7,6 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
 import { MainContentComponent } from './main-content/main-content.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -17,7 +18,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     NotFoundComponent,
     FaqComponent,
     AboutComponent,
-    MainContentComponent
+    MainContentComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     NotFoundComponent,
     FaqComponent,
     AboutComponent,
-    MainContentComponent
+    MainContentComponent,
+    ErrorComponent
   ]
 })
 export class CoreModule { }

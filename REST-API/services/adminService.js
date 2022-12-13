@@ -7,7 +7,7 @@ const { secret } = require('../services/userService');
 let timesUntilBlock = 6;
 
 async function adminLogin(email, password, pin) {
-    const admin = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
+    const admin = await User.findOne({ email }).where('role').equals('admin').collation({ locale: 'en', strength: 2 });
 
     if (timesUntilBlock <= 0) {
         admin.blocked = true;

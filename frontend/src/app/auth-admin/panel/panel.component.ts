@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/authorization/auth.service';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { IUser } from 'src/app/shared/interfaces/user';
-import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-panel',

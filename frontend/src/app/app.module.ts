@@ -6,24 +6,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
-import { AuthorizationModule } from './authorization/authorization.module';
-import { OffersModule } from './offers/offers.module';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { BACKEND_ERROR } from './shared/error';
 import { BehaviorSubject } from 'rxjs';
+import { RequestRepairComponent } from './request-repair/request-repair.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
+    RequestRepairComponent,
   ],
   imports: [
     BrowserModule,
-    OffersModule,
     CoreModule,
     HttpClientModule,
     SharedModule,
-    AuthorizationModule,
     AppRoutingModule,
   ],
   providers: [

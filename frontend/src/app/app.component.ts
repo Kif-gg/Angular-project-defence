@@ -25,11 +25,10 @@ export class AppComponent {
     this.router.events.pipe(
       filter((evt): evt is ActivationStart => evt instanceof ActivationStart),
       map(evt => evt.snapshot.data?.['admin']),
-      filter((data) => !!data)
     ).subscribe((admin) => {
-      if (!admin) {
+      if (admin == false || admin == undefined) {
         this.admin = false;
-      } else if (admin == true) {
+      } else {
       this.admin = admin;
       }
     })
