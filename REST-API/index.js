@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('./middlewares/cors');
 
+const cors = require('./middlewares/cors');
 const authController = require('./controllers/authController');
 const dataController = require('./controllers/dataController');
 const adminController = require('./controllers/adminController');
@@ -23,6 +23,8 @@ async function start() {
 
         app.use(express.json());
         app.use(cors());
+        app.use(trimBody());
+        app.use(session());
 
         app.get('/', (req, res) => {
             res.json({ message: 'REST service operational' });
@@ -32,8 +34,6 @@ async function start() {
         app.use('/data/offers', dataController);
         app.use('/o074dm1n', adminController);
         app.use('/data', repairRequestController)
-        app.use(trimBody());
-        app.use(session());
 
 
 

@@ -1,1 +1,58 @@
-<p>request-repair works!</p>
+<main>
+
+    <div class="repair-box">
+
+        <h1>Do You need a quality service to repair your vehicle? You are at the right place!</h1>
+        <h3>Fill the form and submit, we will notify you via email or phone call if your request is approved.</h3>
+
+        <form #requestRepair="ngForm" (ngSubmit)="createRequestHandler(requestRepair)">
+            <label for="damageImagesUrl">Paste the URL of the images of your damaged vehicle:</label>
+            <input type="text" name="damageImagesUrl" #damages="ngModel" ngModel required maxlength="150">
+            <ng-container *ngIf="damages.touched">
+                <p *ngIf="damages.errors?.['required']">
+                    Image URL is required!
+                </p>
+                <p *ngIf="damages.errors?.['maxlength']">
+                    Image URL cannot be longer than 150 symbols!
+                </p>
+            </ng-container>
+            <label for="description-of-problems">Describe your problem: </label>
+            <textarea name="description-of-problems" placeholder="Type the problem here..." rows="5" cols="51"
+                #description="ngModel" ngModel required minlength="10" maxlength="255"></textarea>
+            <ng-container *ngIf="description.touched">
+                <p *ngIf="description.errors?.['required']">
+                    Description is required!
+                </p>
+                <p *ngIf="description.errors?.['minlength']">
+                    Description is too short!
+                </p>
+                <p *ngIf="description.errors?.['maxlength']">
+                    Description is too long!
+                </p>
+            </ng-container>
+            <label for="brand-and-model">Tell us what brand and model is your car: </label>
+            <input type="text" name="brand-and-model" placeholder="Example: VW Passat 6" #brandmodel="ngModel" ngModel
+                required minlength="5" maxlength="50">
+            <ng-container *ngIf="brandmodel.touched">
+                <p *ngIf="brandmodel.errors?.['required']">
+                    Brand and model field is required!
+                </p>
+                <p *ngIf="brandmodel.errors?.['minlength']">
+                    Input is too short!
+                </p>
+                <p *ngIf="brandmodel.errors?.['maxlength']">
+                    Input is too long!
+                </p>
+            </ng-container>
+            <label for="phoneNumber">Your phone number for contact: </label>
+            <input type="text" name="phoneNumber" #phonenumber="ngModel" ngModel required>
+            <ng-container *ngIf="phonenumber.touched">
+                <p *ngIf="phonenumber.errors?.['required']">
+                    Phone number is required!
+                </p>
+            </ng-container>
+            <button class="submit" [disabled]="requestRepair.invalid">Submit the form</button>
+        </form>
+    </div>
+
+</main>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from './core/core.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,12 +24,13 @@ import { RequestRepairComponent } from './request-repair/request-repair.componen
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [
     {
       provide: BACKEND_ERROR,
       useValue: new BehaviorSubject(null)
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

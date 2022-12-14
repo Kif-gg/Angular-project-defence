@@ -1,6 +1,7 @@
 function hasUser() {
     return (req, res, next) => {
-        if (req.user != undefined) {
+        console.log(req.user, 'logged from guard');
+        if (req.user) {
             next();
         } else {
             res.status(401).json({ message: 'Log in is required!' });

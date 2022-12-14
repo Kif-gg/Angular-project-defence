@@ -101,7 +101,6 @@ async function parseToken(token) {
         return jwt.verify(token, secret);
     } catch (error) {
         const message = parseError(error);
-        res.status(400).json({ message });
     }
 };
 

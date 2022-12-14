@@ -29,6 +29,7 @@ authController.post('/register',
 authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.username, req.body.password);
+        console.log(req.user);
         res.json(token);
     } catch (error) {
         const message = parseError(error);
@@ -46,9 +47,9 @@ authController.get('/logout', async (req, res) => {
 
 authController.delete('/profile', hasUser(), async (req, res, next) => {
     try {
-        const user = await User.findById(req.params.userId);
+        const user = await User.findById(req.user._id);
         if (!user) {
-            throw new Error(`User with id ${req.params.userId} does not exist!`);
+            throw new Error(`User with id ${req.user._id} does not exist!`);
         }
         const match = await bcrypt.compare(req.body.password, user.hashedPassword);
         if (!match) {
@@ -63,12 +64,10 @@ authController.delete('/profile', hasUser(), async (req, res, next) => {
 });
 
 authController.get('/profile', hasUser(), async (req, res, next) => {
-    console.log(req.params);
     try {
-        const user = await User.findById(req.params.userId);
-        console.log(user);
+        const user = await User.findById(req.user._id);
         if (!user) {
-            throw new Error(`User with id ${req.params.userId} does not exist!`);
+            throw new Error(`User with id ${req.user._id} does not exist!`);
         }
         res.status(204).json(user);
     } catch (error) {
@@ -79,11 +78,11 @@ authController.get('/profile', hasUser(), async (req, res, next) => {
 
 authController.put('/profile', hasUser(), async (req, res, next) => {
     try {
-        const user = await User.findById(req.params.userId);
+        const user = await User.findById(req.user._id);
         if (!user) {
-            throw new Error(`User with id ${req.params.userId} does not exist!`);
+            throw new Error(`User with id ${req.user._id} does not exist!`);
         }
-        const result = await update(req.params.userId, req.body);
+        const result = await update(req.user._id, req.body);
         res.json(result);
     } catch (error) {
         const message = parseError(error);

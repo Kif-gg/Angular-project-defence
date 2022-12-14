@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-request-repair',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestRepairComponent implements OnInit {
 
+  @ViewChild(
+    NgForm,
+    { static: true }
+  ) createOffer!: ElementRef<HTMLFormElement>;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  createRequestHandler(createRequestForm: NgForm): void {
+    if (createRequestForm.invalid) {
+      return;
+    }
   }
 
 }

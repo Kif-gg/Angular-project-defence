@@ -53,7 +53,7 @@ adminController.get('/h1dd3n4ddr35s/570p/users/:userId', hasUser(),  async (req,
     try {
         const user = await User.findById(req.params.userId);
         if (!user) {
-            throw new Error(`User with id ${req.params.id} does not exist!`)
+            throw new Error(`User with id ${req.params.userId} does not exist!`)
         }
         res.json(user);
     } catch (error) {
@@ -66,7 +66,7 @@ adminController.put('/h1dd3n4ddr35s/570p/users/:userId', hasUser(),  async (req,
     try {
         const user = User.findById(req.params.userId);
         if (!user) {
-            throw new Error(`User with id ${req.params.id} does not exist!`)
+            throw new Error(`User with id ${req.params.userId} does not exist!`)
         }
         const result = await update(req.params.userId, req.body)
         res.json(result);
