@@ -2,7 +2,6 @@ const { register, login, logout, deleteUserById, update } = require('../services
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../util/parser');
 const { hasUser, isGuest } = require('../middlewares/guards');
-const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 const authController = require('express').Router();
@@ -23,9 +22,11 @@ authController.post('/register',
                 throw new Error('Passwords don\'t match!');
             }
             const token = await register(req.body.username, req.body.email, req.body.password, req.body.repass);
+            res.cookie('Authorization', token.accessToken, { httpOnly: true });
             res.json(token);
         } catch (error) {
             const message = parseError(error);
+            res.cookie('Authorization', 'alabala', { maxAge: 0 });
             res.status(400).json({ message })
         }
     });
@@ -33,9 +34,11 @@ authController.post('/register',
 authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.username, req.body.password);
+        res.cookie('Authorization', token.accessToken, { httpOnly: true });
         res.json(token);
     } catch (error) {
         const message = parseError(error);
+        res.cookie('Authorization', 'alabala', { maxAge: 0 });
         res.status(400).json({ message })
     }
 });
@@ -44,6 +47,7 @@ authController.post('/login', isGuest(), async (req, res) => {
 authController.get('/logout', async (req, res) => {
     const token = req.token;
     await logout(token);
+    res.clearCookie('Authorization');
     res.status(204).end();
 });
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 const cors = require('./middlewares/cors');
 const authController = require('./controllers/authController');
@@ -22,6 +23,7 @@ async function start() {
         const app = express();
 
         app.use(express.json());
+        app.use(cookieParser());
         app.use(cors());
         app.use(trimBody());
         app.use(session());
@@ -34,18 +36,6 @@ async function start() {
         app.use('/data/offers', dataController);
         app.use('/o074dm1n', adminController);
         app.use('/data', repairRequestController)
-
-        // app.get('/queries', (req, res) => {
-        //     const query = req.query;
-        //     console.log(query.model);
-        //     const objSearch = {...query};
-        //     objSearch.toprice = Number(objSearch.toprice)
-        //     console.log(objSearch);
-        //     console.log(objSearch.fromprice, typeof objSearch.fromprice);
-        //     res.json(query)
-        // })
-
-
 
 
         app.listen(3030, () => console.log('REST service started.'));

@@ -38,7 +38,7 @@ async function login(username, password) {
     if (!user) {
         throw new Error('Incorrect username or password!');
     } else if (user.blocked == true) {
-        throw new Error('Account blocked for too many wrong attempts! Contact us via email for more details.')
+        throw new Error('Account blocked! Contact us via email for more details.')
     }
 
     const match = await bcrypt.compare(password, user.hashedPassword);
@@ -47,7 +47,7 @@ async function login(username, password) {
         timesUntilBlock--;
         throw new Error('Incorrect username or password!')
     } else if (user.blocked == true) {
-        throw new Error('Account blocked for too many wrong attempts! Contact us via email for more details.')
+        throw new Error('Account blocked! Contact us via email for more details.')
     }
 
     timesUntilBlock = 10;

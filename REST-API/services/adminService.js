@@ -18,7 +18,7 @@ async function adminLogin(email, password, pin) {
     if (!admin) {
         throw new Error('Incorrect email, password or PIN!');
     } else if (admin.blocked == true) {
-        throw new Error('Account blocked for too many wrong attempts! Contact us via email for more details.')
+        throw new Error('Account blocked! Contact us via email for more details.')
     }
 
     const matchPass = await bcrypt.compare(password, admin.hashedPassword);
@@ -31,7 +31,7 @@ async function adminLogin(email, password, pin) {
         timesUntilBlock--;
         throw new Error('Incorrect email, password or PIN!')
     } else if (admin.blocked == true) {
-        throw new Error('Account blocked for too many wrong attempts! Contact us via email for more details.')
+        throw new Error('Account blocked! Contact us via email for more details.')
     }
 
     timesUntilBlock = 6;

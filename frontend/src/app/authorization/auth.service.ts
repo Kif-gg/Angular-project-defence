@@ -11,7 +11,6 @@ const apiUrl = environment.apiUrl;
 })
 export class AuthService implements OnDestroy {
 
-  private readonly TOKEN_NAME = 'accessToken';
   private user$$ = new BehaviorSubject<undefined | null | IUser>(undefined);
   user$ = this.user$$.asObservable().pipe(filter((val): val is IUser | null => val !== undefined));
 
@@ -23,28 +22,20 @@ export class AuthService implements OnDestroy {
 
   subscription: Subscription;
 
-  get token() {
-    return localStorage.getItem(this.TOKEN_NAME);
-  }
-
-
-  parsedToken = null;
 
   constructor(private http: HttpClient) {
 
-    if (this.token) {
-      this.parsedToken = JSON.parse(atob(this.token.split('.')[1]));
-    }
-    this.subscription = this.user$.subscribe(() => {
+    this.subscription = this.user$.subscribe((user) => {
+      console.log(user);
+      
 
-      this.user = this.parsedToken
+      this.user = user;
     })
   }
 
   adminLogin(email: string, password: string, pin: string) {
     return this.http.post<IUser>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/l091n`, { email, password, pin })
       .pipe(tap(user => {
-        localStorage.setItem(this.TOKEN_NAME, user.accessToken);
         this.user$$.next(user)
       }));
   }
@@ -52,7 +43,6 @@ export class AuthService implements OnDestroy {
   adminLogout() {
     return this.http.get<void>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/logout`)
       .pipe(tap(() => {
-        localStorage.removeItem('accessToken');
         this.user$$.next(null)
       }));
   }
@@ -63,8 +53,6 @@ export class AuthService implements OnDestroy {
   register(username: string, email: string, password: string, repass: string) {
     return this.http.post<IUser>(`${apiUrl}/users/register`, { username, email, password, repass })
       .pipe(tap(user => {
-        filter(user => user !== null),
-          localStorage.setItem(this.TOKEN_NAME, user.accessToken);
         this.user$$.next(user)
       }));
   }
@@ -72,8 +60,6 @@ export class AuthService implements OnDestroy {
   login(username: string, password: string) {
     return this.http.post<IUser>(`${apiUrl}/users/login`, { username, password })
       .pipe(tap(user => {
-        filter(user => user !== null),
-          localStorage.setItem(this.TOKEN_NAME, user.accessToken);
         this.user$$.next(user)
       }));
   }
@@ -81,7 +67,11 @@ export class AuthService implements OnDestroy {
   getProfile() {
     return this.http.get<IUser>(`${apiUrl}/users/profile`)
       .pipe(
-        tap(user => this.user$$.next(user)),
+        tap(user => {
+          this.user$$.next(user)
+          console.log(user);
+        }
+          ),
         catchError((err) => {
           this.user$$.next(null);
           return throwError(() => err);
@@ -97,7 +87,6 @@ export class AuthService implements OnDestroy {
   deleteProfile() {
     return this.http.delete<any>(`${apiUrl}/users/profile`)
       .pipe(tap(() => {
-        localStorage.removeItem('accessToken');
         this.user$$.next(null)
       }));
   }
@@ -105,7 +94,6 @@ export class AuthService implements OnDestroy {
   logout() {
     return this.http.get<void>(`${apiUrl}/users/logout`)
       .pipe(tap(() => {
-        localStorage.removeItem('accessToken');
         this.user$$.next(null)
       }));
   }
