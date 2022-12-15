@@ -7,31 +7,31 @@
 
         <form #requestRepair="ngForm" (ngSubmit)="createRequestHandler(requestRepair)">
             <label for="damageImagesUrl">Paste the URL of the images of your damaged vehicle:</label>
-            <input type="text" name="damageImagesUrl" #damages="ngModel" ngModel required maxlength="150">
-            <ng-container *ngIf="damages.touched">
-                <p *ngIf="damages.errors?.['required']">
+            <input type="text" name="imageUrl" #imageUrl="ngModel" ngModel required maxlength="150">
+            <ng-container *ngIf="imageUrl.touched">
+                <p *ngIf="imageUrl.errors?.['required']">
                     Image URL is required!
                 </p>
-                <p *ngIf="damages.errors?.['maxlength']">
+                <p *ngIf="imageUrl.errors?.['maxlength']">
                     Image URL cannot be longer than 150 symbols!
                 </p>
             </ng-container>
             <label for="description-of-problems">Describe your problem: </label>
-            <textarea name="description-of-problems" placeholder="Type the problem here..." rows="5" cols="51"
-                #description="ngModel" ngModel required minlength="10" maxlength="255"></textarea>
-            <ng-container *ngIf="description.touched">
-                <p *ngIf="description.errors?.['required']">
+            <textarea name="problem" placeholder="Type the problem here..." rows="5" cols="51"
+                #problem="ngModel" ngModel required minlength="10" maxlength="255"></textarea>
+            <ng-container *ngIf="problem.touched">
+                <p *ngIf="problem.errors?.['required']">
                     Description is required!
                 </p>
-                <p *ngIf="description.errors?.['minlength']">
+                <p *ngIf="problem.errors?.['minlength']">
                     Description is too short!
                 </p>
-                <p *ngIf="description.errors?.['maxlength']">
+                <p *ngIf="problem.errors?.['maxlength']">
                     Description is too long!
                 </p>
             </ng-container>
             <label for="brand-and-model">Tell us what brand and model is your car: </label>
-            <input type="text" name="brand-and-model" placeholder="Example: VW Passat 6" #brandmodel="ngModel" ngModel
+            <input type="text" name="brandmodel" placeholder="Example: VW Passat 6" #brandmodel="ngModel" ngModel
                 required minlength="5" maxlength="50">
             <ng-container *ngIf="brandmodel.touched">
                 <p *ngIf="brandmodel.errors?.['required']">
