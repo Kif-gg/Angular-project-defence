@@ -5,9 +5,9 @@
     <form #editOffer="ngForm" (ngSubmit)="saveEditedHandler(editOffer)">
         <div class="details">
             <h2>Brand: </h2>
-            <p><strong>{{offerDetails?.vehicleBrand}}</strong></p>
+            <p><strong>{{offerDetails?.brand}}</strong></p>
             <h2>Model: </h2>
-            <p><strong>{{offerDetails?.vehicleModel}}</strong></p>
+            <p><strong>{{offerDetails?.model}}</strong></p>
             <h2>Price: </h2>
             <ng-container *ngIf="editMode">
                 <input type="number" #price="ngModel" [(ngModel)]="offerDetails!.price" name="price" required
@@ -74,7 +74,7 @@
             </ng-container>
             <ng-container *ngIf="!editMode">
                 <p><strong><img src="{{offerDetails?.imageUrl}}"
-                            alt="{{offerDetails?.vehicleBrand}} {{offerDetails?.vehicleModel}}" /></strong></p>
+                            alt="{{offerDetails?.brand}} {{offerDetails?.model}}" /></strong></p>
             </ng-container>
             <h2>Phone number: </h2>
             <ng-container *ngIf="editMode">

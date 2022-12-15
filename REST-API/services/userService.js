@@ -94,13 +94,13 @@ async function parseToken(token) {
     try {
         const match = await BlacklistedToken.find({ token: token });
 
-        if (match) {
+        if (match.length > 0) {
             throw new Error('Token is in blacklist!');
         }
-
         return jwt.verify(token, secret);
     } catch (error) {
-        const message = parseError(error);
+        const parsed = parseError(error);
+        throw new Error(parsed);
     }
 };
 

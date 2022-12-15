@@ -11,6 +11,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { BACKEND_ERROR } from './shared/error';
 import { BehaviorSubject } from 'rxjs';
 import { RequestRepairComponent } from './request-repair/request-repair.component';
+import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RequestRepairComponent } from './request-repair/request-repair.componen
     FormsModule
   ],
   providers: [
+    appInterceptorProvider,
     {
       provide: BACKEND_ERROR,
       useValue: new BehaviorSubject(null)

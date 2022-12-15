@@ -29,7 +29,6 @@ authController.post('/register',
 authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.username, req.body.password);
-        console.log(req.user);
         res.json(token);
     } catch (error) {
         const message = parseError(error);
@@ -50,10 +49,6 @@ authController.delete('/profile', hasUser(), async (req, res, next) => {
         const user = await User.findById(req.user._id);
         if (!user) {
             throw new Error(`User with id ${req.user._id} does not exist!`);
-        }
-        const match = await bcrypt.compare(req.body.password, user.hashedPassword);
-        if (!match) {
-            throw new Error('Password is incorrect!');
         }
         await deleteUserById(req.user._id);
         res.status(204).end();

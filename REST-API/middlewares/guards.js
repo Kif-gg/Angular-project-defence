@@ -1,6 +1,5 @@
 function hasUser() {
     return (req, res, next) => {
-        console.log(req.user, 'logged from guard');
         if (req.user) {
             next();
         } else {

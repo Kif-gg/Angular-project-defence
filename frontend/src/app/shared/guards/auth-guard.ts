@@ -17,15 +17,17 @@ export class AuthGuard implements CanActivate {
             take(1),
             map(user => {
                 const loginRequired = route.data['loginRequired'];
-
+                
                 if (loginRequired == undefined || !!user == loginRequired) {
                     return true;
                 }
 
-                return !!user ? (
-                    user.role == 'user' ?
-                        this.router.createUrlTree(['/']) :
-                        this.router.createUrlTree(['/o074dm1n/h1dd3n4ddr35s/570p/panel'])
+                return user ? (
+                    (user.role == 'user' || user.role == undefined) ?
+                        this.router.createUrlTree(['/']) : 
+                        (user.role == 'admin') ?
+                        this.router.createUrlTree(['/o074dm1n/h1dd3n4ddr35s/570p/panel']) :
+                        this.router.createUrlTree(['/'])
                 ) :
                     this.router.createUrlTree(['/users/login']);
             })

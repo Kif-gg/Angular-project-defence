@@ -1,8 +1,8 @@
 const { Schema, model, Types: { ObjectId } } = require('mongoose');
 
 const offerSchema = new Schema({
-    vehicleBrand: { type: String, required: [true, 'Please choose the brand of your vehicle!'] },
-    vehicleModel: { type: String, required: [true, 'Please choose the model of your vehicle!'] },
+    brand: { type: String, required: [true, 'Please choose the brand of your vehicle!'] },
+    model: { type: String, required: [true, 'Please choose the model of your vehicle!'] },
     price: { type: Number, required: true, min: [0, 'Price cannot be negative!'] },
     year: {
         type: Number, required: true, validate: {

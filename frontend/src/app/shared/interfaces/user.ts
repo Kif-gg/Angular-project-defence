@@ -6,4 +6,5 @@ export interface IUser {
     pin: string;
     role: string;
     blocked: boolean;
+    accessToken: string;
 }

@@ -28,15 +28,16 @@
             </ng-container>
             <label>Password: </label>
             <input #passwordInput="ngModel" [type]="passtext" name="password" ngModel required>
+            <span (mouseenter)="showPass()" (mouseleave)="hidePass()">👁️</span>
             <ng-container *ngIf="passwordInput.touched">
                 <p class="error" *ngIf="passwordInput.errors?.['required']">
                     Password is required!
                 </p>
             </ng-container>
             <!-- TODO add event to show password -->
-            <span (mouseenter)="showPass()" (mouseleave)="hidePass()">👁️</span>
             <label>Confirm Password: </label>
             <input #repassInput="ngModel" [type]="repasstext" name="repass" ngModel required>
+            <span (mouseenter)="showRepass()" (mouseleave)="hideRepass()">👁️</span>
             <ng-container *ngIf="repassInput.touched">
                 <p class="error" *ngIf="repassInput.errors?.['required']">
                     Repeating password is required!
@@ -46,7 +47,6 @@
                 </p>
             </ng-container>
             <!-- TODO add event to show password -->
-            <span (mouseenter)="showRepass()" (mouseleave)="hideRepass()">👁️</span>
             <button class="submit" [disabled]="registerForm.invalid">Register</button>
         </form>
         <p>You already have an account? <a routerLink="/users/login">Login here.</a></p>

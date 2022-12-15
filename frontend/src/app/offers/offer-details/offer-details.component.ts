@@ -26,12 +26,12 @@ export class OfferDetailsComponent implements OnInit {
     this.offerHandler();
   }
 
+  id = '';
   offerHandler() {
-    let id = 'alabala';
     this.activatedRoute.params.subscribe(
-      (params: Params) => { id = params['id'] }
+      (params: Params) => { this.id = params['id'] }
     );
-    this.offerService.loadOfferById(id).subscribe({
+    this.offerService.loadOfferById(this.id).subscribe({
       next: (value) => {
 
         this.offerDetails = value;
@@ -54,7 +54,12 @@ export class OfferDetailsComponent implements OnInit {
         return;
       }
       const { price, year, description, imageUrl, phoneNumber } = updateForm.value;
-      this.offerDetails = { price, year, description, imageUrl, phoneNumber } as any;
+      console.log(this.id, price, year, description, imageUrl, phoneNumber);
+
+      this.offerService.updateOffer(this.id, price, year, description, imageUrl, phoneNumber)
+        .subscribe(() => {
+          
+        });
       this.toggleEditMode();
     } else {
       return;

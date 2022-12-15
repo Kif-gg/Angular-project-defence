@@ -35,10 +35,10 @@ export class RegisterComponent {
   repasstext = 'password';
 
   showRepass() {
-    this.passtext = 'text';
+    this.repasstext = 'text';
   }
 
   hideRepass() {
-    this.passtext = 'password';
+    this.repasstext = 'password';
   }
 }

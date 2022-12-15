@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { IUser } from '../shared/interfaces/user';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, catchError, filter, of, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, catchError, filter, Subscription, tap, throwError } from 'rxjs';
 
 const apiUrl = environment.apiUrl;
 
@@ -11,6 +11,7 @@ const apiUrl = environment.apiUrl;
 })
 export class AuthService implements OnDestroy {
 
+  private readonly TOKEN_NAME = 'accessToken';
   private user$$ = new BehaviorSubject<undefined | null | IUser>(undefined);
   user$ = this.user$$.asObservable().pipe(filter((val): val is IUser | null => val !== undefined));
 
@@ -22,10 +23,15 @@ export class AuthService implements OnDestroy {
 
   subscription: Subscription;
 
+  get token() {
+    return localStorage.getItem(this.TOKEN_NAME);
+  }
 
 
   constructor(private http: HttpClient) {
+
     this.subscription = this.user$.subscribe(user => {
+
       this.user = user;
     })
   }
@@ -45,12 +51,23 @@ export class AuthService implements OnDestroy {
 
   register(username: string, email: string, password: string, repass: string) {
     return this.http.post<IUser>(`${apiUrl}/users/register`, { username, email, password, repass })
-      .pipe(tap(user => this.user$$.next(user)));
+      .pipe(tap(user => {
+        filter(user => user !== null),
+          localStorage.setItem(this.TOKEN_NAME, user.accessToken);
+        this.user$$.next(user)
+      }));
   }
 
   login(username: string, password: string) {
     return this.http.post<IUser>(`${apiUrl}/users/login`, { username, password })
-      .pipe(tap(user => this.user$$.next(user)));
+      .pipe(tap(user => {
+        filter(user => user !== null),
+          console.log('logging from authService'),
+
+          localStorage.setItem(this.TOKEN_NAME, user.accessToken);
+
+        this.user$$.next(user)
+      }));
   }
 
   getProfile() {
@@ -59,7 +76,7 @@ export class AuthService implements OnDestroy {
         tap(user => this.user$$.next(user)),
         catchError((err) => {
           this.user$$.next(null);
-          return [err];
+          return throwError(() => err);
         })
       );
   }
@@ -69,9 +86,20 @@ export class AuthService implements OnDestroy {
       .pipe(tap(user => this.user$$.next(user)));
   }
 
+  deleteProfile() {
+    return this.http.delete<any>(`${apiUrl}/users/profile`)
+      .pipe(tap(() => {
+        localStorage.removeItem('accessToken');
+        this.user$$.next(null)
+      }));
+  }
+
   logout() {
     return this.http.get<void>(`${apiUrl}/users/logout`)
-      .pipe(tap(() => this.user$$.next(null)));
+      .pipe(tap(() => {
+        localStorage.removeItem('accessToken');
+        this.user$$.next(null)
+      }));
   }
 
   ngOnDestroy(): void {

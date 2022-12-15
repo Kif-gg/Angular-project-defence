@@ -24,11 +24,13 @@ export class OfferService {
     return this.httpClient.get<IOffer>(`${apiUrl}/data/offers/${id}`);
   }
 
-  createOffer(brand: string, model: string, price: number, year: number, description: string, imageUrl: string, phoneNumber: string) {
-    return this.httpClient.post<IOffer>(`${apiUrl}/data/offers`, { brand, model, price, year, description, imageUrl, phoneNumber });
+  createOffer(brand: string, model: string, price: number, year: number, description: string, imageUrl: string, phoneNumber: string, _ownerId: string) {    
+    return this.httpClient.post<IOffer>(`${apiUrl}/data/offers`, { brand, model, price, year, description, imageUrl, phoneNumber, _ownerId });
   }
 
   updateOffer(id: string, price: number, year: number, description: string, imageUrl: string, phoneNumber: string) {
+    console.log('request made!');
+    
     return this.httpClient.put<IOffer>(`${apiUrl}/data/offers/${id}`, { price, year, description, imageUrl, phoneNumber });
   }
 

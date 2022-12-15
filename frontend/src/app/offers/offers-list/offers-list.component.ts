@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IOffer } from '../../shared/interfaces/offer';
 import { OfferService } from '../../services/offers/offer.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/authorization/auth.service';
 
 @Component({
   selector: 'app-offers-list',
@@ -12,7 +13,7 @@ export class OffersListComponent implements OnInit {
 
   offersList: IOffer[] | null = null;
 
-  constructor(private offerService: OfferService, private router: Router) { }
+  constructor(private offerService: OfferService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.allOffersHandler();
@@ -59,21 +60,28 @@ export class OffersListComponent implements OnInit {
     this.router.navigate([`/data/offers/${id}`]);
   }
 
-  userId = sessionStorage.getItem('userId');
+  userId = this.authService.user?._id;
 
   myOffers = false;
 
   myOffersHandler() {
-    this.myOffers = true;
-    this.offerService.loadUserOffers(this.userId!).subscribe({
-      next: (value) => {
-        this.offersList = value;
+    console.log(this.authService.user?._id);
+    
+    if (this.userId) {
+      this.myOffers = true;
 
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
+      this.offerService.loadUserOffers(this.userId).subscribe({
+        next: (value) => {
+          this.offersList = value;
+          
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
+    } else {
+      this.router.navigate(['/users/login']);
+    }
   }
 
 }

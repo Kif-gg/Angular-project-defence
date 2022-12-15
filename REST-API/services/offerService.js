@@ -13,7 +13,7 @@ async function getByParams(brand, model, fromPrice, toPrice, fromYear, toYear, k
     const maxYearSearch = Number(toYear) || 2025;
     const detailsPart = keyWord || '';
     return Offer
-        .find({ vehicleBrand: brandSearch, vehicleModel: modelSearch, description: { $regex: new RegExp(detailsPart, 'i') } })
+        .find({ brand: brandSearch, model: modelSearch, description: { $regex: new RegExp(detailsPart, 'i') } })
         .where('price').gte(minPriceSearch).lte(maxPriceSearch)
         .where('year').gte(minYearSearch).lte(maxYearSearch);
 };
@@ -33,8 +33,6 @@ async function create(offer) {
 async function update(id, offer) {
     const existingOffer = await Offer.findById(id);
 
-    existingOffer.vehicleBrand = offer.vehicleBrand;
-    existingOffer.vehicleModel = offer.vehicleModel;
     existingOffer.price = offer.price;
     existingOffer.year = offer.year;
     existingOffer.description = offer.description;

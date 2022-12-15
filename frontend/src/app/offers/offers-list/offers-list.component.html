@@ -433,14 +433,16 @@
     </form>
     <h1 *ngIf="brand.value !== '' && !myOffers">Browse offers for {{brand.value}} brand</h1>
     <h1 *ngIf="brand.value === '' && !myOffers">Browse offers for all brands</h1>
+    <h2 *ngIf="myOffers"><a routerLink="/data/offers" (click)="allOffersHandler()">Go back</a></h2>
     <h1 *ngIf="myOffers">Check your offers</h1>
     <app-loader *ngIf="offersList == null"></app-loader>
+
 
     <div *ngIf="offersList != null" class="all-offers">
         <div *ngFor="let offer of offersList" class="offer-card">
             <p style="display:none">{{offer._id}}</p>
-            <h2>{{offer.vehicleBrand}}</h2>
-            <h3>{{offer.vehicleModel}}</h3>
+            <h2>{{offer.brand}}</h2>
+            <h3>{{offer.model}}</h3>
             <p>{{offer.price}} lv.</p>
             <p>{{offer.year}}</p>
             <img [attr.src]="offer.imageUrl" alt="Car image" width="20%" height="20%">
@@ -452,7 +454,6 @@
     <h2 *ngIf="(offersList == null || offersList.length <= 0) && !myOffers">There aren't any offers yet!</h2>
     <div *ngIf="(offersList == null || offersList.length <= 0) && myOffers">
         <h2>You haven't posted any offers yet!</h2>
-        <h2><a routerLink="/data/offers" (click)="allOffersHandler()">Go back</a></h2>
     </div>
 
 </main>
