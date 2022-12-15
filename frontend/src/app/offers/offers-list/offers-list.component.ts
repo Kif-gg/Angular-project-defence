@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IOffer } from '../../shared/interfaces/offer';
 import { OfferService } from '../../services/offers/offer.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/authorization/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-offers-list',
@@ -15,8 +16,26 @@ export class OffersListComponent implements OnInit {
 
   constructor(private offerService: OfferService, private router: Router, private authService: AuthService) { }
 
+  @ViewChild(
+    NgForm,
+    { static: true }
+  ) searchForm!: ElementRef<HTMLFormElement>;
+
   ngOnInit(): void {
     this.allOffersHandler();
+  }
+
+  searchOffers(searchForm: NgForm) {
+
+    const { brand, model, fromPrice, toPrice, fromYear, toYear, keyword } = searchForm.value;
+    this.offerService.loadOffersByParams(brand, model, fromPrice, toPrice, fromYear, toYear, keyword).subscribe({
+      next: (value) => {
+        this.offersList = value;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
 
@@ -25,7 +44,6 @@ export class OffersListComponent implements OnInit {
     this.offerService.loadOffers().subscribe({
       next: (value) => {
         this.offersList = value;
-
       },
       error: (err) => {
         console.error(err);
@@ -65,8 +83,6 @@ export class OffersListComponent implements OnInit {
   myOffers = false;
 
   myOffersHandler() {
-    console.log(this.authService.user?._id);
-    
     if (this.userId) {
       this.myOffers = true;
 

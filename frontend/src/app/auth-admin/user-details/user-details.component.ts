@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AuthService } from 'src/app/authorization/auth.service';
@@ -18,28 +18,37 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private adminService: AdminService, private authService: AuthService) { }
 
+  @ViewChild(
+    NgForm,
+    { static: true }
+  ) editUserForm!: ElementRef<HTMLInputElement>;
+
   ngOnInit(): void {
     this.userHandler();
   }
 
+  userId = 'alabala';
   userHandler() {
-    let id = 'alabala';
     this.activatedRoute.params.subscribe(
-      (params: Params) => { id = params['userId'] }
+      (params: Params) => { this.userId = params['userId'] }
     );
-      this.adminService.loadUserById(id).subscribe({
-        next: (value) => {
-          
-          this.userDetails = value;
-        },
-        error: (err) => {
-          console.error(err);
-        }
-      })
+    this.adminService.loadUserById(this.userId).subscribe({
+      next: (value) => {
+
+        this.userDetails = value;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
   }
 
   deleteProfileHandler(): void {
+    if (confirm('Are you sure you want to delete this user\'s account? THIS CANNOT BE UNDONE!')) {
+      this.adminService.deleteUser(this.userId).subscribe(() => {
 
+      });
+    }
   }
 
   cancelEditing() {
@@ -48,23 +57,30 @@ export class UserDetailsComponent implements OnInit {
   }
 
   saveEditedHandler(updateForm: NgForm): void {
+    
+    
     if (confirm('Are you sure you want to update this profile\'s data?') == true) {
-
+      
       this.formSubmitted = true;
       if (updateForm.invalid) {
         return;
       }
       const { username, email } = updateForm.value;
-      this.authService.user = {
-        username, email
-      } as any;
+      this.adminService.editUser(this.userId, username, email, this.userDetails!.blocked).subscribe(() => {
+
+      })
       this.toggleEditMode();
     } else {
       return;
     }
   }
 
+  changeBlockedVal() {
+    this.userDetails!.blocked = !this.userDetails!.blocked
+  }
+  
   toggleEditMode(): void {
+    console.log(this.userDetails?.blocked);
     this.userHandler();
     this.editMode = !this.editMode;
     if (this.editMode) {

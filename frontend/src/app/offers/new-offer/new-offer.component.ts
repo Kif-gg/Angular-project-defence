@@ -21,18 +21,23 @@ export class NewOfferComponent {
   constructor(private offerService: OfferService, private router: Router, private authService: AuthService) { }
 
   createOfferHandler(createOfferForm: NgForm): void {
-    if (createOfferForm.invalid) {
-      return;
-    }
-    const { brand, model, price, year, description, imageUrl, phoneNumber } = createOfferForm.value;
+    if (confirm('Do you want to proceed with the current data for your offer?')) {
 
-    const _ownerId = this.authService.user?._id!;
-
-    this.offerService.createOffer(brand, model, price, year, description, imageUrl, phoneNumber, _ownerId)
-      .subscribe(() => {
+      if (createOfferForm.invalid) {
+        return;
+      }
+      const { brand, model, price, year, description, imageUrl, phoneNumber } = createOfferForm.value;
       
+      const _ownerId = this.authService.user?._id!;
+      
+      this.offerService.createOffer(brand, model, price, year, description, imageUrl, phoneNumber, _ownerId)
+      .subscribe(() => {
+        
       })
       this.router.navigate(['/data/offers']);
+    } else {
+      return;
+    }
   }
 
   selectedBrandValue = '';

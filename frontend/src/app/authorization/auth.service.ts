@@ -28,22 +28,33 @@ export class AuthService implements OnDestroy {
   }
 
 
+  parsedToken = null;
+
   constructor(private http: HttpClient) {
 
-    this.subscription = this.user$.subscribe(user => {
+    if (this.token) {
+      this.parsedToken = JSON.parse(atob(this.token.split('.')[1]));
+    }
+    this.subscription = this.user$.subscribe(() => {
 
-      this.user = user;
+      this.user = this.parsedToken
     })
   }
 
   adminLogin(email: string, password: string, pin: string) {
     return this.http.post<IUser>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/l091n`, { email, password, pin })
-      .pipe(tap(user => this.user$$.next(user)));
+      .pipe(tap(user => {
+        localStorage.setItem(this.TOKEN_NAME, user.accessToken);
+        this.user$$.next(user)
+      }));
   }
 
   adminLogout() {
     return this.http.get<void>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/logout`)
-      .pipe(tap(() => this.user$$.next(null)));
+      .pipe(tap(() => {
+        localStorage.removeItem('accessToken');
+        this.user$$.next(null)
+      }));
   }
 
   // ==========================================
@@ -62,10 +73,7 @@ export class AuthService implements OnDestroy {
     return this.http.post<IUser>(`${apiUrl}/users/login`, { username, password })
       .pipe(tap(user => {
         filter(user => user !== null),
-          console.log('logging from authService'),
-
           localStorage.setItem(this.TOKEN_NAME, user.accessToken);
-
         this.user$$.next(user)
       }));
   }

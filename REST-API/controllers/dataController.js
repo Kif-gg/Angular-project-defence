@@ -10,9 +10,10 @@ dataController.get('/', async (req, res) => {
         if (req.query.where) {
             const userId = JSON.parse(req.query.where.split('=')[1]);
             offers = await getByUserId(userId);
-        } else if (req.query.brand) {
+        } else if (req.query.brand || req.query.model || req.query.fromPrice || req.query.toPrice || req.query.fromYear || req.query.toYear || req.query.keyWord) {
+
             const { brand, model, fromPrice, toPrice, fromYear, toYear, keyWord } = req.query;
-            offers = await getByParams(brand, model, fromPrice, toPrice, fromYear, toYear, keyWord);
+            offers = await getByParams(brand, model, Number(fromPrice), Number(toPrice), Number(fromYear), Number(toYear), keyWord);
         } else {
             offers = await getAll();
         }

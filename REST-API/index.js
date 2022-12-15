@@ -35,6 +35,16 @@ async function start() {
         app.use('/o074dm1n', adminController);
         app.use('/data', repairRequestController)
 
+        // app.get('/queries', (req, res) => {
+        //     const query = req.query;
+        //     console.log(query.model);
+        //     const objSearch = {...query};
+        //     objSearch.toprice = Number(objSearch.toprice)
+        //     console.log(objSearch);
+        //     console.log(objSearch.fromprice, typeof objSearch.fromprice);
+        //     res.json(query)
+        // })
+
 
 
 

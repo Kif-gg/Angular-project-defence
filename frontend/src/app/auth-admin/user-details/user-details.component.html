@@ -38,6 +38,13 @@
             <ng-container *ngIf="!editMode">
                 <p><strong>{{userDetails!.email}}</strong></p>
             </ng-container>
+            <h2>blocked: </h2>
+            <ng-container *ngIf="editMode">
+                <input type="checkbox" #blocked [(ngModel)]="userDetails.blocked" name="blocked" (click)="changeBlockedVal()">
+            </ng-container>
+            <ng-container *ngIf="!editMode">
+                <p><strong>{{userDetails!.blocked}}</strong></p>
+            </ng-container>
             <p>
                 <ng-template #edit>
                     <button class="edit" [disabled]="updateUser.invalid" [type]="'submit'">Save</button>

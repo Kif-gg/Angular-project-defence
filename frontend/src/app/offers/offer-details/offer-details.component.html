@@ -78,10 +78,10 @@
             </ng-container>
             <h2>Phone number: </h2>
             <ng-container *ngIf="editMode">
-                <input type="text" #phonenumber="ngModel" [(ngModel)]="offerDetails!.phoneNumber" name="phoneNumber"
+                <input type="text" #phoneNumber="ngModel" [(ngModel)]="offerDetails!.phoneNumber" name="phoneNumber"
                     required>
-                <ng-container *ngIf="phonenumber.touched || formSubmitted">
-                    <p class="error" *ngIf="phonenumber.errors?.['required']">
+                <ng-container *ngIf="phoneNumber.touched || formSubmitted">
+                    <p class="error" *ngIf="phoneNumber.errors?.['required']">
                         Phone number is required!
                     </p>
                 </ng-container>

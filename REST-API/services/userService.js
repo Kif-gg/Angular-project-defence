@@ -8,7 +8,7 @@ const { parseError } = require('../util/parser');
 const secret = 'xldfhg783o4riomnjhdgf';
 let timesUntilBlock = 10;
 
-async function register(username, email, password) {
+async function register(username, email, password, repass) {
     const existingEmail = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
     const existingUsername = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
     if (existingEmail) {

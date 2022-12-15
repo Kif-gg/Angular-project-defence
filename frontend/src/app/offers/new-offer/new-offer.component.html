@@ -32,7 +32,7 @@
                     <option value="Tesla">Tesla</option>
                     <option value="Toyota">Toyota</option>
                     <option value="Trabant">Trabant</option>
-                    <option value="VW">VW</option>
+                    <option value="Volkswagen">Volkswagen</option>
                 </select>
                 <ng-container *ngIf="brand.value == ''">
                     <p>Brand must be specified!</p>
@@ -496,9 +496,9 @@
                         <p>Model must be specified!</p>
                     </ng-container>
                 </div>
-                <div *ngIf="brand.value == 'VW'" id="VW">
+                <div *ngIf="brand.value == 'Volkswagen'" id="VW">
                     <label for="model">Model: </label>
-                    <select name="model" #vw ngModel (change)="onSelectedModelHandler(vw.value)">
+                    <select name="model" #Volkswagen ngModel (change)="onSelectedModelHandler(Volkswagen.value)">
                         <option selected value="">Choose model</option>
                         <option value="Passat">Passat</option>
                         <option value="Golf">Golf</option>
@@ -512,7 +512,7 @@
                         <option value="Touareg">Touareg</option>
                         <option value="Touran">Touran</option>
                     </select>
-                    <ng-container *ngIf="vw.value == ''">
+                    <ng-container *ngIf="Volkswagen.value == ''">
                         <p>Model must be specified!</p>
                     </ng-container>
                 </div>
@@ -560,9 +560,9 @@
                 <p>Image URL cannot be longer than 150 symbols!</p>
             </ng-container>
             <label for="phoneNumber">Your phone number for contacts: </label>
-            <input type="text" name="phoneNumber" #phonenumber="ngModel" ngModel required>
-            <ng-container *ngIf="phonenumber.touched">
-                <p *ngIf="phonenumber.errors?.['required']">
+            <input type="text" name="phoneNumber" #phoneNumber="ngModel" ngModel required>
+            <ng-container *ngIf="phoneNumber.touched">
+                <p *ngIf="phoneNumber.errors?.['required']">
                     Phone number is required!
                 </p>
             </ng-container>

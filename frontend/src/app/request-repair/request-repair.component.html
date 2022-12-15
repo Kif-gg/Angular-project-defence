@@ -45,9 +45,9 @@
                 </p>
             </ng-container>
             <label for="phoneNumber">Your phone number for contact: </label>
-            <input type="text" name="phoneNumber" #phonenumber="ngModel" ngModel required>
-            <ng-container *ngIf="phonenumber.touched">
-                <p *ngIf="phonenumber.errors?.['required']">
+            <input type="text" name="phoneNumber" #phoneNumber="ngModel" ngModel required>
+            <ng-container *ngIf="phoneNumber.touched">
+                <p *ngIf="phoneNumber.errors?.['required']">
                     Phone number is required!
                 </p>
             </ng-container>

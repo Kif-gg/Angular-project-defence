@@ -68,7 +68,7 @@ async function getBlockedUsers() {
 };
 
 async function update(id, user) {
-    const existingUser = User.findById(id);
+    const existingUser = await User.findById(id);
 
     existingUser.email = user.email;
     existingUser.username = user.username;

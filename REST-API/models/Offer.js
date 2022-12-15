@@ -15,7 +15,7 @@ const offerSchema = new Schema({
         minLength: [50, 'Description must be minimum 50 characters!'],
         maxLength: [255, 'Description cannot be longer than 255 characters!']
     },
-    imageUrl: { type: String, default: '', maxLength: [150, 'Image URL cannot be longer than 150 symbols!'] },
+    imageUrl: { type: String, default: 'No Image URL', maxLength: [150, 'Image URL cannot be longer than 150 symbols!'] },
     phoneNumber: { type: String, required: [true, 'Phone number is required!'] },
     _ownerId: { type: ObjectId, ref: 'User', required: true }
 

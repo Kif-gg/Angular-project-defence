@@ -5,15 +5,24 @@ async function getAll() {
 };
 
 async function getByParams(brand, model, fromPrice, toPrice, fromYear, toYear, keyWord) {
-    const brandSearch = brand || '';
-    const modelSearch = model || '';
+    if (!!brand == false || brand === undefined) {
+        brand = '';
+    }
+    if (!!model == false || model === undefined || model == 'undefined') {
+        model = '';
+    }
+    if (!!keyWord == false || keyWord === undefined) {
+        keyWord = '';
+    }
+    const brandSearch = brand;
+    const modelSearch = model;
     const minPriceSearch = Number(fromPrice) || 0;
     const maxPriceSearch = Number(toPrice) || 99999999999;
     const minYearSearch = Number(fromYear) || 1970;
     const maxYearSearch = Number(toYear) || 2025;
-    const detailsPart = keyWord || '';
+    const detailsPart = keyWord;
     return Offer
-        .find({ brand: brandSearch, model: modelSearch, description: { $regex: new RegExp(detailsPart, 'i') } })
+        .find({ brand: { '$regex': `${brandSearch}`, '$options': 'i' }, model: { '$regex': `${modelSearch}`, '$options': 'i' }, description: { '$regex': `${detailsPart}`, '$options': 'i' } })
         .where('price').gte(minPriceSearch).lte(maxPriceSearch)
         .where('year').gte(minYearSearch).lte(maxYearSearch);
 };
@@ -37,6 +46,7 @@ async function update(id, offer) {
     existingOffer.year = offer.year;
     existingOffer.description = offer.description;
     existingOffer.imageUrl = offer.imageUrl;
+    existingOffer.phoneNumber = offer.phoneNumber;
 
     return existingOffer.save();
 };

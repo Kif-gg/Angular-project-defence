@@ -25,7 +25,14 @@ export class AdminService {
   }
 
   loadUserById(id: string) {
-    return this.httpClient.get<IUser>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/users/${id}`)
+    return this.httpClient.get<IUser>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/users/${id}`);
   }
 
+  editUser(id: string, username: string, email: string, blocked: boolean) {
+    return this.httpClient.put<IUser>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/users/${id}`, { username, email, blocked });
+  }
+
+  deleteUser(id: string) {
+    return this.httpClient.delete<IUser>(`${apiUrl}/o074dm1n/h1dd3n4ddr35s/570p/users/${id}`)
+  }
 }

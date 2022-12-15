@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from 'src/app/authorization/auth.service';
 import { OfferService } from '../../services//offers/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer';
@@ -20,7 +20,12 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   offerDetails: IOffer | null = null;
-  constructor(private activatedRoute: ActivatedRoute, private offerService: OfferService, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private offerService: OfferService, private authService: AuthService, private router: Router) { }
+
+  @ViewChild(
+    NgForm,
+    { static: true }
+  ) deleteForm!: ElementRef<HTMLFormElement>;
 
   ngOnInit(): void {
     this.offerHandler();
@@ -43,7 +48,12 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   deleteOfferHandler(): void {
+    if (confirm('Are you sure you want to delete your offer? THIS CANNOT BE UNDONE!')){
+      this.offerService.deleteOffer(this.id).subscribe(() => {
 
+      });
+      this.router.navigate(['/data/offers']);
+    }
   }
 
   saveEditedHandler(updateForm: NgForm): void {
@@ -61,6 +71,7 @@ export class OfferDetailsComponent implements OnInit {
           
         });
       this.toggleEditMode();
+      this.offerHandler()
     } else {
       return;
     }
