@@ -25,8 +25,7 @@ export class AuthService implements OnDestroy {
 
   constructor(private http: HttpClient) {
 
-    this.subscription = this.user$.subscribe((user) => {
-      console.log(user);
+    this.subscription = this.user$.subscribe(user => {
       
 
       this.user = user;

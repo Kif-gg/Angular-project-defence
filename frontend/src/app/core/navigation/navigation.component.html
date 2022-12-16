@@ -1,15 +1,17 @@
 <nav>
-    <a routerLink="/" title="Home Page">Home</a>
-    <a routerLink="/data/offers" title="Offers Catalog">Vehicle offers</a>
-    <a routerLink="/about" title="About Page">About Us</a>
-    <a routerLink="/FAQ" title="Frequently Asked Questions">FAQ</a>
-    <div *ngIf="!isLoggedIn">
-        <a routerLink="/users/login" title="Login">Login</a>
-        <a routerLink="/users/register" title="Register">Register</a>
-    </div>
-    <div *ngIf="isLoggedIn">
-        <a routerLink="/data" title="Repair vehicle">Vehicle service and repair</a>
-        <a routerLink="/users/profile" title="Profile">{{user?.username}} - My Profile</a>
-        <a routerLink="/users/logout" title="Logout">Logout</a>
-    </div>
+    <ul>
+        <li (click)="changeStyle($event)"><a routerLink="/" title="Home Page">Home</a></li>
+        <li (click)="changeStyle($event)"><a routerLink="/data/offers" title="Offers Catalog">Vehicle offers</a></li>
+        <li (click)="changeStyle($event)"><a routerLink="/about" title="About Page">About Us</a></li>
+        <li (click)="changeStyle($event)"><a routerLink="/FAQ" title="Frequently Asked Questions">FAQ</a></li>
+        <div *ngIf="!isLoggedIn">
+            <li (click)="changeStyle($event)" class="right-floater"><a routerLink="/users/login" title="Login">Login</a></li>
+            <li (click)="changeStyle($event)" class="right-floater"><a routerLink="/users/register" title="Register">Register</a></li>
+        </div>
+        <div *ngIf="isLoggedIn">
+            <li (click)="changeStyle($event)"><a routerLink="/data" title="Repair vehicle">Vehicle service and repair</a></li>
+            <li (click)="changeStyle($event)" class="right-floater"><a routerLink="/users/profile" title="Profile">{{user?.username}} - My Profile</a></li>
+            <li (click)="changeStyle($event)" class="right-floater"><a routerLink="/users/logout" title="Logout">Logout</a></li>
+        </div>
+    </ul>
 </nav>

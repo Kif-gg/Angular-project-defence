@@ -7,8 +7,6 @@ const repairRequestController = require('express').Router();
 repairRequestController.post('/', hasUser(), async (req, res) => {
     try {
         const data = Object.assign({}, req.body);
-        console.log(req.body);
-        console.log(data);
         const request = await createRepairRequest(data);
         res.json(request);
     } catch (error) {

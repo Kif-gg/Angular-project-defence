@@ -14,8 +14,9 @@ export class ErrorComponent implements OnDestroy{
 
   constructor(@Inject(BACKEND_ERROR) private backendError: BehaviorSubject<Error | null>, private router: Router) {
     this.backendError$.pipe(take(1), filter(val => !val)).subscribe(() => {
-      this.router.navigate(['/'])
+      
     });
+    this.router.navigate(['/'])
   }
   ngOnDestroy(): void {
     this.backendError.next(null)
