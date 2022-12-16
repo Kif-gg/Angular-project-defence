@@ -31,7 +31,7 @@ authController.post('/register',
         }
     });
 
-authController.post('/login', isGuest(), async (req, res) => {
+authController.post('/login', /*isGuest(),*/ async (req, res) => {
     try {
         const token = await login(req.body.username, req.body.password);
         res.cookie('Authorization', token.accessToken, { httpOnly: true });

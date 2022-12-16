@@ -25,6 +25,19 @@ export class OffersListComponent implements OnInit {
     this.allOffersHandler();
   }
 
+  changeStyle(event: Event) {
+    const el = (event.target as HTMLElement).parentElement;
+    
+    const elsiblings = Array.from(el!.children);
+    console.log(elsiblings);
+    
+
+    for (let sibling of elsiblings) {
+      sibling.classList.remove('active');
+    }
+    (event.target as HTMLElement).classList.add('active');
+  }
+
   searchOffers(searchForm: NgForm) {
 
     const { brand, model, fromPrice, toPrice, fromYear, toYear, keyword } = searchForm.value;

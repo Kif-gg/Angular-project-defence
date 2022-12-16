@@ -21,7 +21,6 @@ export class LoginComponent {
 
   loginHandler(loginForm: NgForm): void {
 
-    // TODO change this to user from database
     if (loginForm.invalid) {
       return
     }

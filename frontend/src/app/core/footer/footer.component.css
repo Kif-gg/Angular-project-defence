@@ -1,0 +1,40 @@
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #128dab;
+    color: white;
+    margin: auto;
+    font-size: 20px;
+}
+
+.contact {
+    text-decoration: underline;
+    color: cornsilk;
+    font-weight: 900;
+    transition: 0.5s ease-in-out;
+}
+
+.contact:hover {
+    background-color: coral;
+    color: black;
+}
+
+.left {
+    float: left;
+    display: block;
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    font-size: 20px;
+}
+
+.right {
+    display: block;
+    float: right;
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    font-size: 20px;
+}

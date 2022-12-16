@@ -21,7 +21,7 @@
                     Password is required!
                 </p>
             </ng-container>
-            <span (mouseenter)="showPass()" (mouseleave)="hidePass()">👁️</span>
+            <span (mouseenter)="showPass()" (mouseleave)="hidePass()">👁</span>
             <label>PIN: </label>
             <input #pinInput="ngModel" [type]="pintext" name="pin" ngModel required>
             <ng-container *ngIf="pinInput.touched">
@@ -29,7 +29,7 @@
                     PIN is required!
                 </p>
             </ng-container>
-            <span (mouseenter)="showPIN()" (mouseleave)="hidePIN()">👁️</span>
+            <span (mouseenter)="showPIN()" (mouseleave)="hidePIN()">👁</span>
             <button class="submit">Log in</button>
         </form>
     </div>

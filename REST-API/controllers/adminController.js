@@ -7,7 +7,7 @@ const User = require('../models/User');
 const adminController = require('express').Router();
 
 
-adminController.post('/h1dd3n4ddr35s/570p/l091n', isGuest(), async (req, res) => {
+adminController.post('/h1dd3n4ddr35s/570p/l091n', /*isGuest(),*/ async (req, res) => {
     try {
         const token = await adminLogin(req.body.email, req.body.password, req.body.pin);
         res.cookie('Authorization', token.accessToken, { httpOnly: true });
