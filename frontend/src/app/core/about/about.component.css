@@ -1,15 +1,36 @@
-.map-image {
-    width: 50%;
+.map-image img {
+    width: 70%;
     display: block;
-    margin-left: 15%;
-    margin-right: 25%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
-.team-image1 {
-    float: left;
-    width: 33.33%;
-    padding: 5px;
+.team-image1 img {
+    float: right;
+    border: 5px solid ;
+}
+
+.team-image2 img {
+    border: 5px solid ;
+}
+
+.team-image3 img {
+    margin-top: 2%;
+    border: 5px solid ;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-image4 img {
+    width: 60%;
+    border: 5px solid ;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
 }
 
 .row::after {
@@ -18,16 +39,52 @@
     display: table;
 }
 
-h1 {
+.beautified-header {
     text-align: center;
     color: coral;
     text-shadow: -2px 1px 2px #000000;
     -webkit-text-stroke: 0.5px #000000;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     box-sizing: border-box;
-    width: 50%;
+    width: 60%;
     margin: auto;
     margin-top: 1%;
     background-color: #333;
     border-radius: 15px;
+    margin-bottom: 1%;
+}
+
+p {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 2%;
+    font-size: 30px;
+}
+
+hr {
+    height: 20px;
+    background-color: #333;
+}
+
+.questions {
+    margin-top: 5%;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact {
+    text-decoration: underline;
+    font-weight: 900;
+    transition: 0.5s ease-in-out;
+    color: coral;
+}
+
+.contact:hover {
+    background-color: #128dab;
+    color: black;
 }
