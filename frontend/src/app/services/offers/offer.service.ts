@@ -33,7 +33,6 @@ export class OfferService {
   }
 
   updateOffer(id: string, price: number, year: number, description: string, imageUrl: string, phoneNumber: string) {
-    console.log('request made!');
 
     return this.httpClient.put<any>(`${apiUrl}/data/offers/${id}`, { price, year, description, imageUrl, phoneNumber });
   }

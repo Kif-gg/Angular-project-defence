@@ -80,7 +80,6 @@ export class UserDetailsComponent implements OnInit {
   }
   
   toggleEditMode(): void {
-    console.log(this.userDetails?.blocked);
     this.userHandler();
     this.editMode = !this.editMode;
     if (this.editMode) {

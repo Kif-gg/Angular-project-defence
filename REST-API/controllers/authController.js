@@ -72,7 +72,7 @@ authController.get('/profile', hasUser(), async (req, res, next) => {
         if (!user) {
             throw new Error(`User with id ${req.user._id} does not exist!`);
         }
-        res.status(204).json(user);
+        res.json(user);
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });
