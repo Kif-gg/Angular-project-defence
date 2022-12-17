@@ -15,15 +15,13 @@ export class FaqComponent {
     question?.classList.toggle('active')
 
     const elsiblings = Array.from(document.getElementsByClassName('question'));
-    
+
     for (let sibling of elsiblings) {
-      if (question?.tagName !== 'SECTION') {
-        const answer = question?.nextElementSibling as HTMLElement;
-        if (answer.style.maxHeight) {
-          answer.style.maxHeight = '';
-        } else {
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
+      const answer = question?.nextElementSibling as HTMLElement;
+      if (answer.style.maxHeight) {
+        answer.style.maxHeight = '';
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
       }
     }
   }
