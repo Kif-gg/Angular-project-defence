@@ -2,31 +2,32 @@
     <!-- TODO add event listeners for showing and hiding answers -->
     <section class="faq-block">
         <h2>Frequently asked questions by our customers: </h2>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>Is the site legit?</h3>
         </div>
         <div class="answer">
             <p>This is the official site of RBS Vehicle Express, if you find any other website portraying us,
-                please contact us on number <span class="contact"><a href="tel:+1-111-222-3"
-                        title="Fake number">+1-111-222-3</a></span> immediately! Thank you!</p>
+                please contact us on number <a href="tel:+1-111-222-3" title="Fake number"><span
+                        class="contact">+1-111-222-3</span></a> immediately! Thank you!</p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>Are the shopping and selling secured against scam?</h3>
         </div>
         <div class="answer">
             <p>Everyone that has registered can offer an offer on our site, however if you find something suspicious
                 of scam don't wait and immediately inform us via email.</p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>Are the repairing services good enough?</h3>
         </div>
         <div class="answer">
             <p>Our teams of mechanics which are in every province are proved masters and have degrees of repairing
-                and taking care of vehicles! Check in <strong><a routerLink="/about">our about page</a></strong> to
+                and taking care of vehicles! Check in <strong><a class="contact" routerLink="/about">our about
+                        page</a></strong> to
                 learn more about
                 the teams!</p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>Is my data safe?</h3>
         </div>
         <div class="answer">
@@ -37,7 +38,7 @@
             <p><strong>2.</strong> If you need our mechanics' services.</p>
             <p>And that's it! Everything else you can do without an account!</p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>How long is the waiting until you view my request for repair services?</h3>
         </div>
         <div class="answer">
@@ -45,28 +46,29 @@
                 from <strong>08:00</strong> to <strong>17:00</strong>. <strong>Sunday</strong> is a non-work day. So
                 expect your request approved in the given period of time if it meets the requirements.</p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>My account is blocked, what should I do?</h3>
         </div>
         <div class="answer">
             <p>Usually, the account gets blocked if you enter wrong login data <strong>several times.</strong> This is
                 done for security measures to prevent hacking. If you account is blocked or you have suspicion that
                 you might have been hacked,
-                <span class="contact">
-                    <a href="mailto:fake_email@alabala.com" title="fake_email@alabala.com">
+                <a href="mailto:fake_email@alabala.com" title="fake_email@alabala.com"><span class="contact">
+
                         contact us here.
-                    </a>
-                </span>
+                    </span>
+                </a>
+
             </p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>Do you deliver cars to demanded places?</h3>
         </div>
         <div class="answer">
             <p>We have drivers and platforms that can transport your vehicle wherever you want in the country, this
                 service is available in all provinces.</p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>How long will it take if I chose delivery option from you?</h3>
         </div>
         <div class="answer">
@@ -75,7 +77,7 @@
                     km</strong> and you
                 order for example at <strong>15:00 o'clock,</strong> we will send our drivers on the day tomorrow.</p>
         </div>
-        <div class="question">
+        <div class="question" (click)="showAnswer($event)">
             <h3>Why is my request for repairing not approved?</h3>
         </div>
         <div class="answer">

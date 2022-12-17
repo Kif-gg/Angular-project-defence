@@ -18,14 +18,17 @@ export class NavigationComponent {
   constructor(private authService: AuthService) { }
 
   changeStyle(event: Event) {
-    const el = (event.target as HTMLElement).parentElement;
+    const el = (event.target as HTMLElement);
     
-    const elsiblings = Array.from(document.getElementsByTagName('li'));
+    const elsiblings = Array.from(document.getElementsByTagName('a'));
 
     for (let sibling of elsiblings) {
-      sibling.classList.remove('active');
+        sibling.classList.remove('active');
     }
-    el!.classList.add('active');
+    
+    if (el!.tagName != 'LI') {
+      el!.classList.add('active');
+    }
   }
 
 

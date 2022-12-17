@@ -1,0 +1,98 @@
+h2 {
+    text-align: center;
+    color: coral;
+    text-shadow: -2px 1px 2px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-sizing: border-box;
+    width: 50%;
+    margin: auto;
+    margin-top: 2%;
+    background-color: #333;
+    border-radius: 15px;
+    margin-bottom: 5%;
+}
+
+h3 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 4px solid #333;
+}
+
+.question {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+    height: 46px;
+    width: 70%;
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.question:hover {
+    background-color: #128dab;
+    color: white;
+}
+
+.question h3:after {
+    margin-top: -1%;
+    content: '\002B';
+    font-size: 30px;
+    float: right;
+    margin-left: -15%;
+    width: 25%;
+}
+
+.active {
+    background-color: bisque;
+}
+
+.active h3:after {
+    margin-top: -1%;
+    content: "\2212";
+}
+
+.answer {
+    border: 4px solid #333;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 60%;
+    padding: 0 18px;
+    max-height: 0;
+    color: white;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.faq-block {
+    margin-bottom: 10%;
+}
+
+.contact {
+    text-decoration: underline;
+    color: rgb(244, 80, 80);
+    font-weight: 900;
+    transition: 0.5s ease-in-out;
+}
+
+.contact:hover {
+    background-color: #128dab;
+    color: black;
+}
+
+strong {
+    text-decoration: underline;
+    color: rgb(91, 249, 107);
+}
