@@ -31,3 +31,127 @@
     font-size: 28px;
     padding: 0px 10px;
 }
+
+.search {
+    border: 10px solid #333;
+    text-align: center;
+    margin-top: 10px;
+    background-color: lightgray;
+}
+
+.submit {
+    margin-bottom: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+table {
+    margin: auto;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+select {
+    font-size: 13px;
+}
+
+input {
+    font-size: 13px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 18px 0;
+    border-radius: 26px;
+}
+
+td {
+    padding: 10px 0;
+    font-style: italic;
+}
+
+h1 {
+    text-align: center;
+    color: coral;
+    text-shadow: -2px 1px 2px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-sizing: border-box;
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+    background-color: #333;
+    border-radius: 15px;
+    margin-bottom: 1%;
+}
+
+.no-offers {
+    margin-top: 20%;
+    text-align: center;
+}
+
+#back {
+    float: left;
+    color: black;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    background-color: #128dab;
+    width: 20%;
+    border-radius: 12px;
+    box-shadow: 0 9px #999;
+    transition: 0.5s ease-in-out;
+}
+
+#back:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#back:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.image {
+    margin: auto;
+}
+
+.details {
+    text-align: center;
+    color: black;
+    border: none;
+    text-decoration: none;
+    background-color: #128dab;
+    border-radius: 12px;
+    box-shadow: 0 9px #999;
+    transition: 0.5s ease-in-out;
+    width: 100%;
+    margin-right: 20%;
+}
+
+.details:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.details:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.offer-card {
+    border: 8px solid black;
+    border-radius: 26px;
+    margin-bottom: 26px;
+    background-color: lightgray;
+}

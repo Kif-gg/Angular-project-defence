@@ -9,10 +9,10 @@ const routes: Routes = [
     {
         path: '570p/l091n',
         component: AdminLoginComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         data: {
             title: 'Administration panel',
-            loginRequired: false,
+            // loginRequired: false,
             admin: true,
         }
     },

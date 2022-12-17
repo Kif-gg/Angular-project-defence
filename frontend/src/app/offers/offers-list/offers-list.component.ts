@@ -29,8 +29,6 @@ export class OffersListComponent implements OnInit {
     const el = (event.target as HTMLElement).parentElement;
     
     const elsiblings = Array.from(el!.children);
-    console.log(elsiblings);
-    
 
     for (let sibling of elsiblings) {
       sibling.classList.remove('active');
@@ -86,20 +84,19 @@ export class OffersListComponent implements OnInit {
   }
 
   detailsHandler(event: Event): void {
-    const id = (event.target as HTMLElement).parentElement?.parentElement?.children[0].textContent;
+    const id = (event.target as HTMLElement).parentElement?.children[0].textContent;
 
     this.router.navigate([`/data/offers/${id}`]);
   }
 
-  userId = this.authService.user?._id;
-
   myOffers = false;
 
   myOffersHandler() {
-    if (this.userId) {
+    
+    if (this.authService.user?._id) {
       this.myOffers = true;
 
-      this.offerService.loadUserOffers(this.userId).subscribe({
+      this.offerService.loadUserOffers(this.authService.user?._id).subscribe({
         next: (value) => {
           this.offersList = value;
           

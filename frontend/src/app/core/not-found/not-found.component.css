@@ -2,7 +2,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 20%;
+    width: 25%;
 }
 
 .flat {
@@ -13,6 +13,7 @@
 }
 
 .top {
+    padding-top: 10%;
     font-size: 100px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;

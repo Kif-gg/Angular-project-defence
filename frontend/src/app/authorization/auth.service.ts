@@ -14,7 +14,7 @@ export class AuthService implements OnDestroy {
   private user$$ = new BehaviorSubject<undefined | null | IUser>(undefined);
   user$ = this.user$$.asObservable().pipe(filter((val): val is IUser | null => val !== undefined));
   
-  user: IUser | null = null;
+  user?: IUser | null;
   
   get isLoggedIn() {
     return this.user !== null;
@@ -68,8 +68,7 @@ export class AuthService implements OnDestroy {
       .pipe(
         tap(user => {
           this.user$$.next(user)
-        }
-          ),
+        }),
         catchError((err) => {
           this.user$$.next(null);
           return throwError(() => err);

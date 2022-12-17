@@ -1,0 +1,33 @@
+.map-image {
+    width: 50%;
+    display: block;
+    margin-left: 15%;
+    margin-right: 25%;
+
+}
+
+.team-image1 {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+h1 {
+    text-align: center;
+    color: coral;
+    text-shadow: -2px 1px 2px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-sizing: border-box;
+    width: 50%;
+    margin: auto;
+    margin-top: 1%;
+    background-color: #333;
+    border-radius: 15px;
+}

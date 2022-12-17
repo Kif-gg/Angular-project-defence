@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from 'src/app/authorization/auth.service';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { IUser } from 'src/app/shared/interfaces/user';
@@ -16,7 +16,7 @@ export class UserDetailsComponent implements OnInit {
   formSubmitted = false;
   editMode = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private adminService: AdminService, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private adminService: AdminService, private router: Router) { }
 
   @ViewChild(
     NgForm,
@@ -48,6 +48,7 @@ export class UserDetailsComponent implements OnInit {
       this.adminService.deleteUser(this.userId).subscribe(() => {
 
       });
+      this.router.navigate(['/o074dm1n/h1dd3n4ddr35s/570p/panel']);
     }
   }
 
@@ -80,7 +81,6 @@ export class UserDetailsComponent implements OnInit {
   }
   
   toggleEditMode(): void {
-    this.userHandler();
     this.editMode = !this.editMode;
     if (this.editMode) {
       this.formSubmitted = false;

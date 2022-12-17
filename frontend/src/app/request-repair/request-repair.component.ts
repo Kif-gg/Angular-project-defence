@@ -31,11 +31,6 @@ export class RequestRepairComponent implements OnInit {
       }
       const { imageUrl, problem, brandmodel, phoneNumber } = createReqForm.value;
 
-      console.log(createReqForm.value);
-      
-
-      
-      
       this.reqrepService.createRequest(imageUrl, problem, brandmodel, phoneNumber, this.id!)
       .subscribe(() => {
         

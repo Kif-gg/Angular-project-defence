@@ -64,7 +64,6 @@ export class OfferDetailsComponent implements OnInit {
         return;
       }
       const { price, year, description, imageUrl, phoneNumber } = updateForm.value;
-      console.log(this.id, price, year, description, imageUrl, phoneNumber);
 
       this.offerService.updateOffer(this.id, price, year, description, imageUrl, phoneNumber)
         .subscribe(() => {

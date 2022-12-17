@@ -13,7 +13,7 @@ export class PanelComponent implements OnInit {
 
   usersList: IUser[] | null = null;
 
-  constructor(private adminService: AdminService, private router: Router, private authService: AuthService) { }
+  constructor(private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
     this.allUsersHandler();

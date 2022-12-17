@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../authorization/auth.service';
 
 @Component({
@@ -10,7 +11,10 @@ export class AuthenticateComponent implements OnInit {
 
   isAuthenticating = true;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) {
+
+    
+  }
 
   ngOnInit(): void {
     this.authService.getProfile().subscribe({

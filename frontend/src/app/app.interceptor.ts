@@ -16,16 +16,13 @@ export class AppInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         req = req.clone({ withCredentials: true });
-        
+
         return next.handle(req)
             .pipe(
                 catchError(err => {
-                    if (err.status === 401) {
-                        this.router.navigate(['/users/login'])
-                    }
                     this.backendError.next(err);
                     this.router.navigate(['/error'])
-                    return throwError(() => err);
+                    return throwError(() => err)
                 }));
     }
 }

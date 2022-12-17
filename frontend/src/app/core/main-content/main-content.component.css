@@ -43,7 +43,8 @@ a {
     background: rgba(18, 141, 171);
     width: 25%;
     margin: auto;
-    padding-top: 25px;
+    padding: 26px 13px;
+    box-sizing: content-box;
     height: 20%;
     margin-bottom: 10%;
     border-radius: 15px;
