@@ -1,7 +1,25 @@
-<nav>
-    <a routerLink="/o074dm1n/h1dd3n4ddr35s/570p/panel" title="All users" (click)="allUsersHandler()">All users list</a>
-    <a routerLink="/o074dm1n/h1dd3n4ddr35s/570p/panel" title="Blocked users" (click)="blockedUsersHandler()">Blocked users list</a>
-    <a routerLink="/o074dm1n/h1dd3n4ddr35s/570p/logout" title="Logout">Logout</a>
+<nav class="sidenav">
+    <a (click)="changeStyle($event)" routerLink="/o074dm1n/h1dd3n4ddr35s/570p/panel" title="All users" (click)="allUsersHandler()">All users list</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a (click)="changeStyle($event)" routerLink="/o074dm1n/h1dd3n4ddr35s/570p/panel" title="Blocked users" (click)="blockedUsersHandler()">Blocked users list</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a (click)="changeStyle($event)" routerLink="/o074dm1n/h1dd3n4ddr35s/570p/logout" title="Logout">Logout</a>
 </nav>
 
 
@@ -11,11 +29,11 @@
     
     <div *ngIf="usersList != null" class="all-users">
         <div *ngFor="let user of usersList" class="user-card">
+            <label>ID:</label>
             <h2>{{user._id}}</h2>
+            <label>Username:</label>
             <h2>{{user.username}}</h2>
-            <p>
-                <button class="details" (click)="detailsHandler($event)">Details</button>
-            </p>
+            <h4 class="details" (click)="detailsHandler($event)">Details</h4>
         </div>
     </div>
     <h2 *ngIf="(usersList== null || usersList.length <= 0)">No users to show!</h2>

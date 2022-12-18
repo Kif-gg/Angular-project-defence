@@ -19,6 +19,17 @@ export class PanelComponent implements OnInit {
     this.allUsersHandler();
   }
 
+  changeStyle(event: Event) {
+    const el = (event.target as HTMLElement).parentElement;
+    
+    const elsiblings = Array.from(el!.children);
+
+    for (let sibling of elsiblings) {
+      sibling.classList.remove('active');
+    }
+    (event.target as HTMLElement).classList.add('active');
+  }
+
   allUsersHandler() {
     this.adminService.loadUsers().subscribe({
       next: (value) => {
@@ -42,7 +53,7 @@ export class PanelComponent implements OnInit {
   }
 
   detailsHandler(event: Event): void {
-    const id = (event.target as HTMLElement).parentElement?.parentElement?.children[0].textContent;
+    const id = (event.target as HTMLElement).parentElement?.children[1].textContent;
 
     this.router.navigate([`/o074dm1n/h1dd3n4ddr35s/570p/panel/${id}`]);
   }

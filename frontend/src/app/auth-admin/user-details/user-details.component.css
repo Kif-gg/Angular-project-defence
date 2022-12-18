@@ -1,0 +1,162 @@
+.button {
+    width: 100%;
+    background-color: #128dab;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.delete {
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.cancel {
+    width: 100%;
+    background-color: rgb(215, 145, 14);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: coral;
+    text-shadow: -2px 1px 2px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-sizing: border-box;
+    width: 20%;
+    margin: auto;
+    margin-top: 2%;
+    background-color: #333;
+    border-radius: 15px;
+    margin-bottom: 5%;
+}
+
+.button:hover {
+    background-color: #4CAF50;
+}
+
+.button:active {
+    background-color: #278a2a;
+}
+
+.delete:hover {
+    background-color: rgb(221, 84, 15);
+}
+
+.delete:active {
+    background-color: rgb(184, 70, 14);
+}
+
+.cancel:hover {
+    background-color: rgb(205, 52, 38);
+}
+
+.cancel:active {
+    background-color: rgb(250, 28, 17);
+}
+
+main {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input.ng-invalid.ng-touched {
+    border-left: 6px solid red;
+    color: red;
+}
+
+p {
+    font-style: italic;
+    color: red;
+}
+
+input.ng-valid.ng-touched {
+    border-left: 6px solid green;
+    color: green;
+}
+
+h2 {
+    text-align: center;
+    font-size: 26px;
+    clear: both;
+}
+
+h4 {
+    text-align: center;
+    color: black;
+}
+
+#back {
+    float: left;
+    padding: 16px 20px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    background-color: #128dab;
+    width: 20%;
+    font-size: 24px;
+    border-radius: 12px;
+    box-shadow: 0 9px #999;
+    transition: 0.5s ease-in-out;
+}
+
+#back:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#back:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+hr {
+    height: 20px;
+    background-color: #333;
+}
+
+h5 {
+    font-size: 24px;
+    text-align: center;
+}

@@ -13,10 +13,12 @@ export class ErrorComponent implements OnDestroy{
   backendError$ = this.backendError.asObservable();
 
   constructor(@Inject(BACKEND_ERROR) private backendError: BehaviorSubject<Error | null>, private router: Router) {
-    this.backendError$.pipe(take(1), filter(val => !val)).subscribe(() => {
+    this.backendError$.pipe(take(1), filter(val => !val)).subscribe((err) => {
+      // if (err?.stack)
+      console.log(err);
       
+      // this.router.navigate(['/'])
     });
-    // this.router.navigate(['/'])
   }
   ngOnDestroy(): void {
     this.backendError.next(null)

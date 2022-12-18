@@ -1,0 +1,87 @@
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.5s ease-in-out;
+}
+
+.sidenav a:hover {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+.active {
+    background-color: #128dab;
+}
+
+
+main {
+    margin-left: 160px;
+    font-size: 28px;
+    padding: 0px 10px;
+}
+
+h1 {
+    text-align: center;
+    color: coral;
+    text-shadow: -2px 1px 2px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-sizing: border-box;
+    width: 50%;
+    margin: auto;
+    margin-top: 2%;
+    background-color: #333;
+    border-radius: 15px;
+    margin-bottom: 5%;
+}
+
+h2 {
+    text-align: center;
+}
+
+.details {
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    border: none;
+    text-decoration: none;
+    background-color: #128dab;
+    border-radius: 12px;
+    box-shadow: 0 9px #999;
+    transition: 0.5s ease-in-out;
+    width: 100%;
+    margin-right: 20%;
+}
+
+.details:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.details:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.user-card {
+    border: 8px solid black;
+    border-radius: 26px;
+    margin-bottom: 26px;
+    background-color: lightgray;
+}

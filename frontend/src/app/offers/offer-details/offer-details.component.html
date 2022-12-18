@@ -1,17 +1,22 @@
 <main>
     <app-loader *ngIf="offerDetails == null "></app-loader>
-    <a routerLink="/data/offers">Go back</a>
-    
+    <a routerLink="/data/offers">
+        <h3 id="back">Go back</h3>
+    </a>
+
+
     <form #editOffer="ngForm" (ngSubmit)="saveEditedHandler(editOffer)">
         <div class="details">
             <h2>Brand: </h2>
-            <p><strong>{{offerDetails?.brand}}</strong></p>
+            <h4><strong>{{offerDetails?.brand}}</strong></h4>
+            <hr>
             <h2>Model: </h2>
-            <p><strong>{{offerDetails?.model}}</strong></p>
-            <h2>Price: </h2>
+            <h4><strong>{{offerDetails?.model}}</strong></h4>
+            <hr>
+            <h2>Price (in lv.): </h2>
             <ng-container *ngIf="editMode">
                 <input type="number" #price="ngModel" [(ngModel)]="offerDetails!.price" name="price" required
-                    min="0"><span> lv.</span>
+                    min="0">
                 <ng-container *ngIf="price.touched || formSubmitted">
                     <p class="error" *ngIf="price.errors?.['required']">
                         Price is required!
@@ -22,8 +27,9 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{offerDetails?.price}} lv.</strong></p>
+                <h4><strong>{{offerDetails?.price}}</strong></h4>
             </ng-container>
+            <hr>
             <h2>Year: </h2>
             <ng-container *ngIf="editMode">
                 <input type="number" #year="ngModel" [(ngModel)]="offerDetails!.year" name="year" required min="1970"
@@ -41,12 +47,13 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{offerDetails?.year}}</strong></p>
+                <h4><strong>{{offerDetails?.year}}</strong></h4>
             </ng-container>
+            <hr>
             <h2>Description: </h2>
             <ng-container *ngIf="editMode">
-                <textarea rows="5" cols="51" #description="ngModel" [(ngModel)]="offerDetails!.description"
-                    name="description" required minlength="50" maxlength="255"></textarea>
+                <input type="text" #description="ngModel" [(ngModel)]="offerDetails!.description"
+                    name="description" required minlength="50" maxlength="255">
                 <ng-container *ngIf="description.touched || formSubmitted">
                     <p class="error" *ngIf="description.errors?.['required']">
                         Description is required!
@@ -60,8 +67,9 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{offerDetails?.description}}</strong></p>
+                <h4><strong>{{offerDetails?.description}}</strong></h4>
             </ng-container>
+            <hr>
             <h2>Image: </h2>
             <ng-container *ngIf="editMode">
                 <input type="text" #imageurl="ngModel" [(ngModel)]="offerDetails!.imageUrl" name="imageUrl"
@@ -73,37 +81,39 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong><img src="{{offerDetails?.imageUrl}}"
-                            alt="{{offerDetails?.brand}} {{offerDetails?.model}}" /></strong></p>
+                <h4><strong><img src="{{offerDetails?.imageUrl}}"
+                            alt="{{offerDetails?.brand}} {{offerDetails?.model}}" /></strong></h4>
             </ng-container>
+            <hr>
             <h2>Phone number: </h2>
             <ng-container *ngIf="editMode">
-                <input type="text" #phoneNumber="ngModel" [(ngModel)]="offerDetails!.phoneNumber" name="phoneNumber"
+                <input type="text" #phonenumber="ngModel" [(ngModel)]="offerDetails!.phoneNumber" name="phoneNumber"
                     required>
-                <ng-container *ngIf="phoneNumber.touched || formSubmitted">
-                    <p class="error" *ngIf="phoneNumber.errors?.['required']">
+                <ng-container *ngIf="phonenumber.touched || formSubmitted">
+                    <p class="error" *ngIf="phonenumber.errors?.['required']">
                         Phone number is required!
                     </p>
                 </ng-container>
             </ng-container>
+            <hr>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{offerDetails?.phoneNumber}}</strong></p>
+                <h4><strong>{{offerDetails?.phoneNumber}}</strong></h4>
             </ng-container>
 
             <p>
                 <ng-template #edit>
-                    <button class="edit" [disabled]="editOffer.invalid" [type]="'submit'">Save</button>
-                    <button class="cancel" (click)="cancelEditing()">Cancel</button>
+                    <input class="button" [disabled]="editOffer.invalid" [type]="'submit'" value="Save">
+                    <input class="cancel" (click)="cancelEditing()" value="Cancel" type="button">
                 </ng-template>
                 <ng-template #submit>
-                    <button class="submit" [type]="'button'" (click)="toggleEditMode()"
-                        *ngIf="offerDetails?._ownerId == user?._id" class="edit">Edit data
-                    </button>
+                    <input [type]="'button'" (click)="toggleEditMode()" *ngIf="offerDetails?._ownerId == user?._id"
+                        class="button" value="Edit data">
                 </ng-template>
             </p>
             <ng-container *ngIf="offerDetails?._ownerId == user?._id">
                 <ng-container *ngTemplateOutlet="editMode ? edit : submit"></ng-container>
-                <button class="delete" *ngIf="!editMode" (click)="deleteOfferHandler()">Delete offer</button>
+                <input type="button" class="delete" *ngIf="!editMode" (click)="deleteOfferHandler()"
+                    value="Delete offer">
             </ng-container>
         </div>
         <h2 *ngIf="offerDetails == undefined">Offer does not exist!</h2>

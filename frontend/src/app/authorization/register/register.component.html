@@ -27,16 +27,19 @@
                 </p>
             </ng-container>
             <label>Password: </label>
-            <input #passwordInput="ngModel" [type]="passtext" name="password" ngModel required>
-            <span (mouseenter)="showPass()" (mouseleave)="hidePass()">👁</span>
+            <input #passwordInput="ngModel" [type]="passtext" name="password" [(ngModel)]="passwordcheck" required>
+            <span (mouseenter)="showPass()" (mouseleave)="hidePass()" class="eye">👁</span>
             <ng-container *ngIf="passwordInput.touched">
                 <p class="error" *ngIf="passwordInput.errors?.['required']">
                     Password is required!
                 </p>
+                <p class="error" *ngIf="repassInput.value !== passwordInput.value">
+                    Passwords don't match!
+                </p>
             </ng-container>
             <label>Confirm Password: </label>
-            <input #repassInput="ngModel" [type]="repasstext" name="repass" ngModel required>
-            <span (mouseenter)="showRepass()" (mouseleave)="hideRepass()">👁</span>
+            <input #repassInput="ngModel" [type]="repasstext" name="repass" [(ngModel)]="repasswordcheck" required>
+            <span (mouseenter)="showRepass()" (mouseleave)="hideRepass()" class="eye">👁</span>
             <ng-container *ngIf="repassInput.touched">
                 <p class="error" *ngIf="repassInput.errors?.['required']">
                     Repeating password is required!
@@ -45,9 +48,9 @@
                     Passwords don't match!
                 </p>
             </ng-container>
-            <button class="submit" [disabled]="registerForm.invalid">Register</button>
+            <input type="submit" [disabled]="registerForm.invalid" value="Register">
         </form>
-        <p>You already have an account? <a routerLink="/users/login">Login here.</a></p>
+        <h4>You already have an account? <a routerLink="/users/login"><span class="link">Login here.</span></a></h4>
     </div>
 
 </main>

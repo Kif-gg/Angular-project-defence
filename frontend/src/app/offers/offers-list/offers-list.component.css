@@ -126,6 +126,7 @@ h1 {
 }
 
 .details {
+    cursor: pointer;
     text-align: center;
     color: black;
     border: none;

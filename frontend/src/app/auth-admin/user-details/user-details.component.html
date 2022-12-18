@@ -1,4 +1,6 @@
 <main *ngIf="userDetails">
+    
+    <a id="back" routerLink="/o074dm1n/h1dd3n4ddr35s/570p/panel" title="Panel">Go back</a>
 
     <form #updateUser="ngForm" (ngSubmit)="saveEditedHandler(updateUser)">
         <div class="profile-box">
@@ -21,8 +23,9 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{userDetails!.username}}</strong></p>
+                <h4><strong>{{userDetails!.username}}</strong></h4>
             </ng-container>
+            <hr>
             <h2>Email: </h2>
             <ng-container *ngIf="editMode">
                 <input type="text" #email="ngModel" [(ngModel)]="userDetails!.email" name="email" required appEmail>
@@ -36,30 +39,33 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{userDetails!.email}}</strong></p>
+                <h4><strong>{{userDetails!.email}}</strong></h4>
             </ng-container>
-            <h2>blocked: </h2>
+            <hr>
+            <h2>Blocked: </h2>
             <ng-container *ngIf="editMode">
-                <input type="checkbox" #blocked [(ngModel)]="userDetails.blocked" name="blocked" (click)="changeBlockedVal()">
+                <h5>Check or uncheck the box: 
+                    <input type="checkbox" #blocked [(ngModel)]="userDetails.blocked" name="blocked"
+                        (click)="changeBlockedVal()">
+                </h5>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{userDetails!.blocked}}</strong></p>
+                <h4><strong>{{userDetails!.blocked}}</strong></h4>
             </ng-container>
             <p>
                 <ng-template #edit>
-                    <button class="edit" [disabled]="updateUser.invalid" [type]="'submit'">Save</button>
+                    <input class="button" [disabled]="updateUser.invalid" [type]="'submit'" value="Save">
                     <button class="cancel" (click)="cancelEditing()">Cancel</button>
                 </ng-template>
                 <ng-template #submit>
-                    <button class="submit" [type]="'button'" (click)="toggleEditMode()">Edit data</button>
+                    <input class="button" [type]="'button'" (click)="toggleEditMode()" value="Edit data" type="button">
                 </ng-template>
             </p>
             <ng-container *ngTemplateOutlet="editMode ? edit : submit"></ng-container>
-            <button class="delete" *ngIf="!editMode" (click)="deleteProfileHandler()">Delete account</button>
+            <input class="delete" type="button" *ngIf="!editMode" (click)="deleteProfileHandler()"
+                value="Delete account">
 
         </div>
     </form>
 
 </main>
-
-<a routerLink="/o074dm1n/h1dd3n4ddr35s/570p/panel" title="Panel">Go back</a>

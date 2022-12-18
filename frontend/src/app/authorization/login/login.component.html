@@ -12,15 +12,15 @@
             </ng-container>
             <label>Password: </label>
             <input #passwordInput="ngModel" [type]="passtext" name="password" ngModel required>
-            <span (mouseenter)="showPass()" (mouseleave)="hidePass()">👁</span>
+            <span (mouseenter)="showPass()" (mouseleave)="hidePass()" class="eye">👁</span>
             <ng-container *ngIf="passwordInput.touched">
                 <p class="error" *ngIf="passwordInput.errors?.['required']">
                     Password is required!
                 </p>
             </ng-container>
-            <button class="submit" [disabled]="loginForm.invalid">Log in</button>
+            <input type="submit" [disabled]="loginForm.invalid" value="Log in">
         </form>
-        <p>You don't have an account? <a routerLink="/users/register">Register here.</a></p>
+        <h4>You don't have an account? <a routerLink="/users/register"><span class="link">Register here.</span></a></h4>
     </div>
 
 </main>

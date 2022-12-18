@@ -12,7 +12,12 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+  passwordcheck = '';
+  
+  repasswordcheck = '';
+
   registerHandler(registerForm: NgForm): void {
+
     if (registerForm.invalid) {
       return;
     }

@@ -7,7 +7,7 @@
 
         <form #requestRepair="ngForm" (ngSubmit)="createRequestHandler(requestRepair)">
             <label for="damageImagesUrl">Paste the URL of the images of your damaged vehicle:</label>
-            <input type="text" name="imageUrl" #imageUrl="ngModel" ngModel required maxlength="150">
+            <input type="text" name="imageUrl" #imageUrl="ngModel" ngModel required maxlength="150" placeholder="http://...">
             <ng-container *ngIf="imageUrl.touched">
                 <p *ngIf="imageUrl.errors?.['required']">
                     Image URL is required!
@@ -17,8 +17,8 @@
                 </p>
             </ng-container>
             <label for="description-of-problems">Describe your problem: </label>
-            <textarea name="problem" placeholder="Type the problem here..." rows="5" cols="51"
-                #problem="ngModel" ngModel required minlength="10" maxlength="255"></textarea>
+            <input type="text" name="problem" placeholder="Type the problem here..." #problem="ngModel" ngModel required
+                minlength="10" maxlength="255">
             <ng-container *ngIf="problem.touched">
                 <p *ngIf="problem.errors?.['required']">
                     Description is required!
@@ -45,13 +45,13 @@
                 </p>
             </ng-container>
             <label for="phoneNumber">Your phone number for contact: </label>
-            <input type="text" name="phoneNumber" #phoneNumber="ngModel" ngModel required>
+            <input type="text" name="phoneNumber" #phoneNumber="ngModel" ngModel required placeholder="+359...">
             <ng-container *ngIf="phoneNumber.touched">
                 <p *ngIf="phoneNumber.errors?.['required']">
                     Phone number is required!
                 </p>
             </ng-container>
-            <button class="submit" [disabled]="requestRepair.invalid">Submit the form</button>
+            <input type="submit" [disabled]="requestRepair.invalid" value="Submit the form">
         </form>
     </div>
 

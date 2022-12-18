@@ -1,0 +1,93 @@
+input[type=submit] {
+    width: 100%;
+    background-color: #128dab;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: coral;
+    text-shadow: -2px 1px 2px #000000;
+    -webkit-text-stroke: 0.5px #000000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-sizing: border-box;
+    width: 20%;
+    margin: auto;
+    margin-top: 2%;
+    background-color: #333;
+    border-radius: 15px;
+    margin-bottom: 5%;
+}
+
+input[type=submit]:hover {
+    background-color: #4CAF50;
+}
+
+input[type=submit]:active {
+    background-color: #278a2a;
+}
+
+main {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    height: 500px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input.ng-invalid.ng-touched{
+    border-left: 6px solid red;
+    color: red;
+}
+
+p {
+    font-style: italic;
+    color: red;
+}
+
+.eye {
+    margin-left: -50px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.link {
+    color: #278a2a;
+    text-decoration: underline;
+}
+
+.link:hover {
+    background-color: #128dab;
+    color: white;
+    text-decoration: underline;
+}
+
+h4 {
+    text-align: center;
+    font-size: 26px;
+}
