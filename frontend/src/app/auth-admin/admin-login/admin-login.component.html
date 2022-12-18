@@ -1,6 +1,8 @@
 <main>
 
-    <a routerLink="/"><h2 id="back">GO BACK TO MAIN PAGE</h2></a>
+    <a routerLink="/">
+        <h2 id="back">GO BACK TO MAIN PAGE</h2>
+    </a>
     <div class="login-box">
         <h1>LOG IN AS AN ADMIN</h1>
         <form #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
@@ -16,20 +18,21 @@
             </ng-container>
             <label>Password: </label>
             <input #passwordInput="ngModel" [type]="passtext" name="password" ngModel required>
+            <span (mouseenter)="showPass()" (mouseleave)="hidePass()" class="eye">👁</span>
             <ng-container *ngIf="passwordInput.touched">
                 <p class="error" *ngIf="passwordInput.errors?.['required']">
                     Password is required!
                 </p>
             </ng-container>
-            <span (mouseenter)="showPass()" (mouseleave)="hidePass()" class="eye">👁</span>
+
             <label>PIN: </label>
             <input #pinInput="ngModel" [type]="pintext" name="pin" ngModel required>
+            <span (mouseenter)="showPIN()" (mouseleave)="hidePIN()" class="eye">👁</span>
             <ng-container *ngIf="pinInput.touched">
                 <p class="error" *ngIf="pinInput.errors?.['required']">
                     PIN is required!
                 </p>
             </ng-container>
-            <span (mouseenter)="showPIN()" (mouseleave)="hidePIN()" class="eye">👁</span>
             <input type="submit" value="Log in">
         </form>
     </div>
