@@ -24,18 +24,12 @@ export class AuthGuard implements CanActivate {
 
                 if (!!user) {
                     if (user.role == 'user') {
-                        this.router.createUrlTree(['/']);
-                        return !!user;
-
+                        return this.router.createUrlTree(['/']);
                     } else if (user.role == 'admin') {
-                        this.router.createUrlTree(['/o074dm1n/h1dd3n4ddr35s/570p/panel']);
-                        return !!user;
-
+                        return this.router.createUrlTree(['/o074dm1n/h1dd3n4ddr35s/570p/panel']);
                     }
                 } else {
-                    this.router.createUrlTree(['/users/login']);
-                    return !!user;
-
+                    return this.router.createUrlTree(['/users/login']);
                 }
                 return !!user;
             }));
