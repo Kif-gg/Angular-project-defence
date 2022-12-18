@@ -83,3 +83,29 @@ input.ng-valid.ng-touched {
     border-left: 6px solid green;
     color: green;
 }
+
+#back {
+    float: left;
+    padding: 16px 20px;
+    color: white;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    background-color: #128dab;
+    width: 20%;
+    font-size: 24px;
+    border-radius: 12px;
+    box-shadow: 0 9px #999;
+    transition: 0.5s ease-in-out;
+}
+
+#back:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#back:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

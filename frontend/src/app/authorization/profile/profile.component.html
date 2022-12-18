@@ -21,8 +21,9 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{user.username}}</strong></p>
+                <h5><strong>{{user.username}}</strong></h5>
             </ng-container>
+            <hr>
             <h2>Email: </h2>
             <ng-container *ngIf="editMode">
                 <input type="text" #email="ngModel" [(ngModel)]="user.email" name="email" required appEmail>
@@ -36,19 +37,19 @@
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="!editMode">
-                <p><strong>{{user.email}}</strong></p>
+                <h5><strong>{{user.email}}</strong></h5>
             </ng-container>
             <p>
                 <ng-template #edit>
-                    <button class="edit" [disabled]="updateUser.invalid" [type]="'submit'">Save</button>
-                    <button class="cancel" (click)="cancelEditing()">Cancel</button>
+                    <input class="button" [disabled]="updateUser.invalid" [type]="'submit'" value="Save">
+                    <input class="cancel" (click)="cancelEditing()" value="Cancel" type="button">
                 </ng-template>
                 <ng-template #submit>
-                    <button class="submit" [type]="'button'" (click)="toggleEditMode()">Edit data</button>
+                    <input class="button" [type]="'button'" (click)="toggleEditMode()" value="Edit data">
                 </ng-template>
             </p>
             <ng-container *ngTemplateOutlet="editMode ? edit : submit"></ng-container>
-            <button class="delete" *ngIf="!editMode" (click)="deleteProfileHandler()">Delete account</button>
+            <input class="delete" *ngIf="!editMode" (click)="deleteProfileHandler()" value="Delete account" type="button">
 
         </div>
     </form>
